@@ -1,7 +1,8 @@
 ---
 layout: base.njk
-title: GST Tax Rates API – FastGST
-description: Access GST tax rates programmatically and seamlessly integrate them into your applications with FastGST API.
+title: GST Tax Rates API – HSN & SAC Code Lookup | FastGST.in
+description: FastGST provides a REST API to look up GST tax rates, search HSN & SAC codes, and retrieve classification hierarchies for India's GST ecosystem. Free tier available.
+keywords: GST API, HSN code lookup, SAC code finder, GST tax rates, GST rate API, HSN SAC search, India GST compliance, tax lookup API
 canonical: /
 preloadFonts: true
 schemaData: |
@@ -11,8 +12,8 @@ schemaData: |
       "@type": "Organization",
       "name": "FastGST.in",
       "legalName": "FastGST.in",
-      "description": "GST-compliant solutions for India including HSN & SAC lookup APIs",
-      "url": "/",
+      "description": "FastGST provides a centralized GST Tax Lookup REST API for India, offering HSN & SAC code search, tax rate retrieval, and classification hierarchy data for developers and businesses.",
+      "url": "https://www.fastgst.in/",
       "logo": "https://www.fastgst.in/images/fastgst.webp",
       "foundingDate": "2024",
       "founder": {
@@ -32,7 +33,6 @@ schemaData: |
           "addressCountry": "IN"
       },
       "sameAs": [
-          "/",
           "https://www.consoledesk.in/marketplace/tax-lookup-api",
           "https://docs.taxlookupapi.fastgst.in"
       ]
@@ -46,19 +46,19 @@ schemaData: |
       "name": "FastGST HSN & SAC Lookup API",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any",
-      "description": "AI-powered REST API for intelligent HSN/SAC fuzzy searches, hierarchy traversals, GST tax breakdowns, and cess information",
-      "url": "/",
+      "description": "REST API for intelligent HSN/SAC fuzzy searches, hierarchy traversals, GST tax breakdowns, and cess information for India's GST ecosystem",
+      "url": "https://www.fastgst.in/",
       "provider": {
           "@type": "Organization",
           "name": "FastGST.in",
-          "url": "/"
+          "url": "https://www.fastgst.in/"
       },
-      "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "42",
-          "bestRating": "5",
-          "worstRating": "1"
+      "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "0",
+          "highPrice": "1800",
+          "priceCurrency": "INR",
+          "offerCount": "4"
       },
       "featureList": [
           "HSN/SAC Code Fuzzy Search",
@@ -92,12 +92,8 @@ schemaData: |
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "FastGST.in",
-      "url": "/",
-      "potentialAction": {
-          "@type": "SearchAction",
-          "target": "/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-      }
+      "url": "https://www.fastgst.in/",
+      "description": "GST Tax Rates API for India – Look up HSN codes, SAC codes, tax rates, and classification hierarchies"
   }
   </script>
 
@@ -106,26 +102,27 @@ schemaData: |
       "@context": "https://schema.org",
       "@type": "WebAPI",
       "name": "FastGST HSN & SAC Lookup API",
-      "description": "Centralized, frequently updated on CBIC and GST Council notifications for HSN & SAC lookup APIs for GST integrations",
-      "url": "https://developers.fastgst.in",
+      "description": "REST API for HSN & SAC code lookup, GST tax rate retrieval, and classification hierarchy traversal. Updated from CBIC and GST Council notifications.",
+      "url": "https://api.taxlookup.fastgst.in/swagger/index.html",
       "provider": {
           "@type": "Organization",
-          "name": "FastGST.in"
+          "name": "FastGST.in",
+          "url": "https://www.fastgst.in/"
       },
-      "documentation": "https://documents.fastgst.in"
+      "documentation": "https://docs.taxlookupapi.fastgst.in/documentations/index.html"
   }
   </script>
 
   <script type="application/ld+json">
   {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "Organization",
       "@id": "https://www.fastgst.in/#organization",
       "name": "FastGST.in",
       "alternateName": "FastGST",
       "url": "https://www.fastgst.in",
       "logo": "https://www.fastgst.in/images/fastgst.webp",
-      "description": "GST-compliant solutions for India including HSN & SAC lookup APIs, tax rate finder, and developer tools",
+      "description": "FastGST provides a centralized GST Tax Lookup REST API for India, offering HSN & SAC code search, tax rate retrieval, and classification hierarchy data.",
       "foundingDate": "2024",
       "founder": {
           "@type": "Person",
@@ -156,7 +153,7 @@ schemaData: |
       "name": "HSN Code Lookup API",
       "description": "REST API service for searching HSN codes, finding GST rates, and validating tax classifications",
       "provider": {
-          "@type": "LocalBusiness",
+          "@type": "Organization",
           "@id": "https://www.fastgst.in/#organization"
       },
       "serviceType": "Developer API",

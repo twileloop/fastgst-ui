@@ -1,0 +1,58 @@
+# FastGST.in
+
+> FastGST.in provides a GST Tax Rates API for India's GST ecosystem. Developers and businesses use FastGST to programmatically look up HSN codes, SAC codes, GST tax rates, classification hierarchies, and compensation cess information via a REST API.
+
+## Website
+
+- Homepage: https://www.fastgst.in/
+- Pricing: https://www.fastgst.in/pricing/
+- Free HSN/SAC Lookup Tool: https://www.fastgst.in/hsn-sac-finder/
+- FAQs: https://www.fastgst.in/faqs/
+- About: https://www.fastgst.in/about/
+- Contact: https://www.fastgst.in/contact/
+- Privacy Policy: https://www.fastgst.in/privacy-policy/
+- Terms & Conditions: https://www.fastgst.in/terms-and-conditions/
+- Refund & Cancellation Policy: https://www.fastgst.in/refund-cancellation-policy/
+
+## API & Developer Resources
+
+- API Swagger: https://api.taxlookup.fastgst.in/swagger/index.html
+- API Documentation: https://docs.taxlookupapi.fastgst.in/documentations/index.html
+- ConsoleDesk (API Key Management): https://www.consoledesk.in/marketplace/tax-lookup-api
+
+## What FastGST Does
+
+FastGST provides a centralized, continuously updated GST Tax Lookup REST API. It aggregates publicly available GST data from CBIC and GST Council notifications into a single developer-friendly API. Key capabilities:
+
+- **Fuzzy Search**: Search HSN/SAC codes by product or service keywords (e.g., "mobile phone", "consulting")
+- **Code Lookup**: Get detailed classification hierarchy for any HSN (8-digit) or SAC (6-digit) code
+- **Tax Rate Retrieval**: Get GST tax rates (5%, 12%, 18%, 28%) and compensation cess for any HSN/SAC code
+- **Hierarchy Traversal**: Navigate chapter → heading → sub-heading → tariff item classification trees
+
+## Pricing Plans (Monthly)
+
+| Plan    | Price        | Daily Requests | Monthly Requests | Duration |
+|---------|-------------|----------------|------------------|----------|
+| Free    | ₹0 (FREE)   | 10/day         | 30 total         | 3 days   |
+| Basic   | ₹499/month  | 100/day        | 3,000/month      | 30 days  |
+| Pro     | ₹899/month  | 2,000/day      | 60,000/month     | 30 days  |
+| Premium | ₹1,800/month| 4,000/day      | 120,000/month    | 30 days  |
+
+All paid plans include priority support and 99.9% uptime SLA. Plans are managed via ConsoleDesk. Custom/bulk plans available via email.
+
+## Contact
+
+- Email: twileloop@outlook.com
+- Plans & API Keys: https://www.consoledesk.in/marketplace/tax-lookup-api
+
+## Important Notes
+
+- Data is aggregated from official CBIC and GST Council notifications
+- Data is provided on a best-effort basis; users should verify against official government sources for statutory compliance
+- FastGST does not provide tax, legal, or accounting advice
+- Founded in 2024 by Sangeeth Nandakumar
+- Hosted on Microsoft Azure (Central India region)
+
+## Optional
+
+- [Full site content for detailed information](https://www.fastgst.in/llms-full.txt)

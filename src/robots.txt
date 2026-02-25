@@ -1,5 +1,4 @@
 # FastGST.in - Robots.txt
-# /robots.txt
 
 User-agent: *
 Allow: /
@@ -10,11 +9,12 @@ Sitemap: https://www.fastgst.in/sitemap.xml
 # Crawl-delay for polite crawling
 Crawl-delay: 1
 
-# Block access to specific paths if needed
-# Disallow: /admin/
-# Disallow: /api/
+# AI/LLM Content Files
+# Machine-readable site summaries for AI assistants and LLM crawlers
+# llms.txt: https://www.fastgst.in/llms.txt
+# llms-full.txt: https://www.fastgst.in/llms-full.txt
 
-# Allow common bots
+# Allow search engine bots
 User-agent: Googlebot
 Allow: /
 
@@ -24,3 +24,33 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
+# Allow AI/LLM Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /

@@ -6,6 +6,12 @@
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
     <meta name="author" content="{{ author or 'FastGST.in' }}">
+    {% if keywords %}<meta name="keywords" content="{{ keywords }}">{% endif %}
+    <meta name="theme-color" content="#4742ef">
+    
+    <!-- AI/LLM Discoverability -->
+    <link rel="alternate" type="text/plain" title="LLM Summary" href="/llms.txt">
+    <link rel="alternate" type="text/plain" title="LLM Full Content" href="/llms-full.txt">
     
     <!-- Favicon - Multiple formats for broad compatibility -->
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -21,6 +27,7 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="FastGST.in">
+    <meta property="og:locale" content="en_IN">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
