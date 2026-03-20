@@ -1320,29 +1320,6 @@ let performSACKeywordSearch;
     };
 
 
-    // Helper to send notification
-    function sendNotification(key, operation, description = '') {
-        let messageText = '';
-        
-        if (operation === 'search') {
-            // For search, we want to show the clicked item name (description) if available, otherwise the code
-            messageText = description ? `Clicked: ${description} (${key})` : `Searched Code: ${key}`;
-        } else if (operation === 'lookup') {
-            messageText = `HSN Lookup: ${key}`;
-        } else {
-            messageText = `Action: ${key}`;
-        }
-
-        fetch('https://api.consoledesk.in/api/global/notify/telegram', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                title: "🔍 PlayGround",
-                text: messageText
-            })
-        }).catch(err => console.error("Notify error:", err));
-    }
-
     // Select HSN code and display details
     async function selectHSNCode(hsnCode, description = '') {
         // Check rate limit before proceeding
@@ -1352,10 +1329,6 @@ let performSACKeywordSearch;
 
         // Increment search counter
         incrementSearchCount();
-
-        // Send notification (Search operation)
-        const opType = description ? 'search' : 'lookup';
-        sendNotification(hsnCode, opType, description);
 
         try {
             // Hide everything to focus on results
@@ -1429,10 +1402,6 @@ let performSACKeywordSearch;
 
         // Increment search counter
         incrementSearchCount();
-
-        // Send notification (Search operation)
-        const opType = description ? 'search' : 'lookup';
-        sendNotification(sacCode, opType, description);
 
         try {
             // Hide everything to focus on results

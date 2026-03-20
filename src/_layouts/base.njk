@@ -267,9 +267,67 @@
     {% include "header.njk" %}
     
     {{ content | safe }}
-    
+
     {% include "footer.njk" %}
-    
+
+    <!-- Common utilities -->
+    <script>
+    /**
+     * Notify function - Send notifications asynchronously
+     * Handles geo location collection once per session automatically
+     * @param {string} text - The text/markdown to be notified
+     */
+    function Notify(text) {
+        // Convert text to Base64
+        const base64Text = btoa(unescape(encodeURIComponent(text)));
+
+        // Check if geo has been collected in this session
+        const geoCollected = sessionStorage.getItem('notifyGeoCollected');
+        const sendGeo = !geoCollected; // Send g=true only if not yet collected
+
+        // Build query parameter
+        const queryParam = sendGeo ? 'true' : 'false';
+        const url = `https://notisvc.consoledesk.in/services/t/p?g=${queryParam}`;
+
+        // Fire async request without blocking
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: base64Text
+        }).then(response => {
+            // Mark geo as collected after first successful call
+            if (sendGeo) {
+                sessionStorage.setItem('notifyGeoCollected', 'true');
+            }
+        }).catch(err => {
+            // Silently fail - don't disrupt user experience
+            console.error('Notify error:', err);
+        });
+    }
+
+    // Send notification on page load with current URL
+    window.addEventListener('load', function() {
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(function() {
+                // Format with context text for Telegram markdown
+                const url = window.location.href;
+                const message = `*Visit:* ${url}`;
+                Notify(message);
+            }, { timeout: 5000 });
+        } else {
+            setTimeout(function() {
+                // Format with context text for Telegram markdown
+                const url = window.location.href;
+                const message = `*Visit:* ${url}`;
+                Notify(message);
+            }, 3000);
+        }
+    });
+    </script>
+
     {% include "scripts.njk" %}
 </body>
 </html>
