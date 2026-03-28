@@ -1,4 +1,4 @@
-name: Build and Deploy to Azure Blob
+name: Build and Deploy to Bunny CDN
 
 on:
   push:
@@ -26,141 +26,18 @@ jobs:
       - name: Build site (Eleventy + Tailwind CSS)
         run: npm run build
 
-      - name: Deploy to Azure Blob Storage
-        uses: azure/cli@v1
-        with:
-          inlineScript: |
-            # 🧹 Step 1: Delete all existing blobs
-            az storage blob delete-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --source '$web' \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }}
-
-            # 🌐 Step 2a: Upload HTML (1 day - balance of freshness & speed)
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --pattern "*.html" \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --content-cache-control "public, max-age=86400, s-maxage=86400, must-revalidate"
-
-            # 🎨 Step 2b: Upload CSS (1 day - iterative styling with good PageSpeed)
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --pattern "*.css" \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --content-cache-control "public, max-age=86400, s-maxage=86400, must-revalidate"
-
-            # 📜 Step 2c: Upload JavaScript (1 day - consistent with CSS)
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --pattern "*.js" \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --content-cache-control "public, max-age=86400, s-maxage=86400, must-revalidate"
-
-            # 🖼️ Step 2d: Upload images & static assets (7 days - improves load time)
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.webp" \
-              --content-cache-control "public, max-age=604800, immutable"
-
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.png" \
-              --content-cache-control "public, max-age=604800, immutable"
-
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.jpg" \
-              --content-cache-control "public, max-age=604800, immutable"
-
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.jpeg" \
-              --content-cache-control "public, max-age=604800, immutable"
-
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.svg" \
-              --content-cache-control "public, max-age=604800, immutable"
-
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.woff2" \
-              --content-cache-control "public, max-age=604800, immutable"
-
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.woff" \
-              --content-cache-control "public, max-age=604800, immutable"
-
-            # 🗺️ Step 2e: Upload sitemap (1 day - helps Google see new pages daily)
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.xml" \
-              --content-cache-control "public, max-age=86400, must-revalidate"
-
-            # 📄 Step 2f: Upload robots.txt (1 day - rarely changes, rechecked daily)
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.txt" \
-              --content-cache-control "public, max-age=86400, must-revalidate"
-
-            # 🎯 Step 2g: Upload favicon (7 days - improves load time)
-            az storage blob upload-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --destination '$web' \
-              --source ./_site \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --pattern "*.ico" \
-              --content-cache-control "public, max-age=604800, immutable"
-
-      - name: Purge Bunny CDN Cache
+      - name: Upload to Bunny CDN
+        env:
+          BUNNY_STORAGE_KEY: ${{ secrets.BUNNY_STORAGE_KEY }}
+          BUNNY_STORAGE_NAME: ${{ secrets.BUNNY_STORAGE_NAME }}
         run: |
-          HTTP_STATUS=$(curl --location --request POST 'https://api.bunny.net/pullzone/4346060/purgeCache' \
-            --header 'AccessKey: ${{ secrets.BUNNY_CDN_APIKEY }}' \
-            --write-out '%{http_code}' \
-            --silent \
-            --output /dev/null)
-          
-          echo "Bunny CDN API Response Status: $HTTP_STATUS"
-          
-          if [[ "$HTTP_STATUS" =~ ^2[0-9][0-9]$ ]]; then
-            echo "✅ Cache purged successfully"
-            exit 0
-          else
-            echo "❌ Failed to purge cache. Expected 2XX, got $HTTP_STATUS"
-            exit 1
-          fi
+          find _site -type f | while read file; do
+            relative="${file#_site/}"
+            echo "Uploading $relative..."
+            curl --fail --silent --show-error \
+              --request PUT \
+              --url "https://sg.storage.bunnycdn.com/${BUNNY_STORAGE_NAME}/${relative}" \
+              --header "AccessKey: ${BUNNY_STORAGE_KEY}" \
+              --header "Content-Type: application/octet-stream" \
+              --data-binary "@${file}"
+          done
