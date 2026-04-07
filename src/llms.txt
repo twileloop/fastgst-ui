@@ -17,7 +17,7 @@
 ## API & Developer Resources
 
 - API Swagger: https://api.taxlookup.fastgst.in/swagger/index.html
-- API Documentation: https://docs.taxlookupapi.fastgst.in/documentations/index.html
+- API Documentation: https://docs.taxlookupapi.fastgst.in
 - ConsoleDesk (API Key Management): https://www.consoledesk.in/marketplace/tax-lookup-api
 
 ## What FastGST Does
