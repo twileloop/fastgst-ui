@@ -2,7 +2,7 @@
 layout: base.njk
 permalink: /pricing/
 title: GST Tax Rates API Pricing Plans | FastGST.in
-description: FastGST API pricing plans with 7-day trial. Basic ₹499 (100/day), Pro ₹899 (2,000/day), Premium ₹1,800 (4,000/day). ₹5 for first 7 days. Priority support, 99.9% uptime SLA.
+description: FastGST API pricing plans. Basic ₹199 (100/day), Standard ₹399 (250/day), Pro ₹899 (2,000/day), Premium ₹1,800 (4,000/day). Priority support, 99.9% uptime SLA.
 keywords: GST API pricing, HSN lookup API cost, tax rate API plans, FastGST pricing, API trial offer
 canonical: /pricing/
 preloadFonts: true
@@ -33,8 +33,18 @@ schemaData: |
           {
               "@type": "Offer",
               "name": "Basic Plan",
-              "description": "Perfect for small projects. 100 requests/day, 3,000 requests/month, 30-day duration. ₹5 for 7 days, then ₹499/month. Priority support, 99.9% uptime SLA.",
-              "price": "499",
+              "description": "Best for individuals. 100 requests/day, 3,000 requests/month, 30-day duration. Priority support, 99.9% uptime SLA.",
+              "price": "199",
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock",
+              "url": "https://www.consoledesk.in/marketplace/tax-lookup-api",
+              "priceValidUntil": "2026-12-31"
+          },
+          {
+              "@type": "Offer",
+              "name": "Standard Plan",
+              "description": "Perfect for small projects. 250 requests/day, 7,500 requests/month, 30-day duration. Priority support, 99.9% uptime SLA.",
+              "price": "399",
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
               "url": "https://www.consoledesk.in/marketplace/tax-lookup-api",
@@ -43,7 +53,7 @@ schemaData: |
           {
               "@type": "Offer",
               "name": "Pro Plan (Recommended)",
-              "description": "For emerging startups or businesses. 2,000 requests/day, 60,000 requests/month, 30-day duration. ₹5 for 7 days, then ₹899/month. Priority support, 99.9% uptime SLA.",
+              "description": "Emerging startups or businesses. 2,000 requests/day, 60,000 requests/month, 30-day duration. Priority support, 99.9% uptime SLA.",
               "price": "899",
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
@@ -53,7 +63,7 @@ schemaData: |
           {
               "@type": "Offer",
               "name": "Premium Plan",
-              "description": "For teams with high quota demands. 4,000 requests/day, 120,000 requests/month, 30-day duration. ₹5 for 7 days, then ₹1,800/month. Priority support, 99.9% uptime SLA.",
+              "description": "Teams with high quota demands. 4,000 requests/day, 120,000 requests/month, 30-day duration. Priority support, 99.9% uptime SLA.",
               "price": "1800",
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
@@ -103,17 +113,17 @@ schemaData: |
 
             <!-- All Plans Section -->
             <div class="mb-12">
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
 
                 <!-- Basic Plan -->
                 <div class="bg-white rounded-2xl shadow-lg border-2 border-black p-6 hover:shadow-xl transition-shadow flex flex-col h-full">
                     <div class="text-center mb-6">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2 h-8">Basic</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Perfect for small projects</p>
+                        <p class="text-gray-600 mb-4 text-sm">Best for individuals</p>
                         <div class="mb-3 flex items-center justify-center">
                             <div class="text-center">
-                                <div class="text-4xl font-bold text-gray-900 mb-2">₹0</div>
-                                <div class="text-sm text-gray-600">for 7 days, then ₹499/month</div>
+                                <div class="text-4xl font-bold text-gray-900 mb-2">₹199</div>
+                                <div class="text-sm text-gray-600">/monthly</div>
                             </div>
                         </div>
                         <p class="text-xs text-gray-600 font-medium mt-3">Valid for 30 days</p>
@@ -145,7 +155,51 @@ schemaData: |
                         </li>
                     </ul>
                     <a href="https://www.consoledesk.in/marketplace/tax-lookup-api" target="_blank" class="block w-full text-center text-white py-2 px-4 rounded-lg font-semibold text-sm transition-all" style="background: linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74));" onmouseover="this.style.background='linear-gradient(to bottom right, rgb(20, 184, 92), rgb(16, 145, 57))';" onmouseout="this.style.background='linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74))';">
-                        Choose
+                        Choose Plan
+                    </a>
+                </div>
+
+                <!-- Standard Plan -->
+                <div class="bg-white rounded-2xl shadow-lg border-2 border-black p-6 hover:shadow-xl transition-shadow flex flex-col h-full">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2 h-8">Standard</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Perfect for small projects</p>
+                        <div class="mb-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-gray-900 mb-2">₹399</div>
+                                <div class="text-sm text-gray-600">/monthly</div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 font-medium mt-3">Valid for 30 days</p>
+                    </div>
+                    <ul class="space-y-2 mb-6 flex-grow text-sm">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700"><strong>250 requests/day</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">7,500 requests/month</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Priority support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">99.9% uptime SLA</span>
+                        </li>
+                    </ul>
+                    <a href="https://www.consoledesk.in/marketplace/tax-lookup-api" target="_blank" class="block w-full text-center text-white py-2 px-4 rounded-lg font-semibold text-sm transition-all" style="background: linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74));" onmouseover="this.style.background='linear-gradient(to bottom right, rgb(20, 184, 92), rgb(16, 145, 57))';" onmouseout="this.style.background='linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74))';">
+                        Choose Plan
                     </a>
                 </div>
 
@@ -159,8 +213,8 @@ schemaData: |
                         <p class="text-gray-600 mb-4 text-sm">Emerging startups or businesses</p>
                         <div class="mb-3 flex items-center justify-center">
                             <div class="text-center">
-                                <div class="text-4xl font-bold text-gray-900 mb-2">₹0</div>
-                                <div class="text-sm text-gray-600">for 7 days, then ₹899/month</div>
+                                <div class="text-4xl font-bold text-gray-900 mb-2">₹899</div>
+                                <div class="text-sm text-gray-600">/monthly</div>
                             </div>
                         </div>
                         <p class="text-xs text-gray-600 font-medium mt-3">Valid for 30 days</p>
@@ -192,7 +246,7 @@ schemaData: |
                         </li>
                     </ul>
                     <a href="https://www.consoledesk.in/marketplace/tax-lookup-api" target="_blank" class="block w-full text-center text-white py-2 px-4 rounded-lg font-semibold text-sm transition-all" style="background: linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74));" onmouseover="this.style.background='linear-gradient(to bottom right, rgb(20, 184, 92), rgb(16, 145, 57))';" onmouseout="this.style.background='linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74))';">
-                        Choose
+                        Choose Plan
                     </a>
                 </div>
 
@@ -203,8 +257,8 @@ schemaData: |
                         <p class="text-gray-600 mb-4 text-sm">Teams with high quota demands</p>
                         <div class="mb-3 flex items-center justify-center">
                             <div class="text-center">
-                                <div class="text-4xl font-bold text-gray-900 mb-2">₹0</div>
-                                <div class="text-sm text-gray-600">for 7 days, then ₹1800/month</div>
+                                <div class="text-4xl font-bold text-gray-900 mb-2">₹1800</div>
+                                <div class="text-sm text-gray-600">/monthly</div>
                             </div>
                         </div>
                         <p class="text-xs text-gray-600 font-medium mt-3">Valid for 30 days</p>
@@ -236,7 +290,7 @@ schemaData: |
                         </li>
                     </ul>
                     <a href="https://www.consoledesk.in/marketplace/tax-lookup-api" target="_blank" class="block w-full text-center text-white py-2 px-4 rounded-lg font-semibold text-sm transition-all" style="background: linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74));" onmouseover="this.style.background='linear-gradient(to bottom right, rgb(20, 184, 92), rgb(16, 145, 57))';" onmouseout="this.style.background='linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74))';">
-                        Choose
+                        Choose Plan
                     </a>
                 </div>
             </div>
