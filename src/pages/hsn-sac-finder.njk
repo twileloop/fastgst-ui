@@ -352,61 +352,64 @@ schemaData: |
                             </div>
                         </div>
 
-                        <!-- Content Area -->
-                        <div class="flex flex-col min-h-[500px] hidden" id="results-panel">
-                            
-                            <!-- Search Summary Header -->
-                            <div class="px-6 py-4 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
-                                <div>
-                                    <h2 class="text-lg font-bold text-gray-900" id="results-title">Search Results</h2>
-                                    <p class="text-sm text-gray-500">To perform a new search, please refresh the page.</p>
-                                </div>
-                            </div>
 
-                            <!-- Row 1 - Hierarchy Tree (Classification) -->
-                            <div id="panel-classification" class="w-full p-6 transition-all duration-300 border-b border-gray-200">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                                    </svg>
-                                    Classification Hierarchy
-                                </h3>
-                                <div id="hierarchy-tree" class="space-y-3">
-                                    <!-- Default state -->
-                                    <div class="text-center py-8 text-gray-400">
-                                        <svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                                        </svg>
-                                        <p class="text-sm">Search to view hierarchy</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row 2 - Tax Details (Tax Rates) -->
-                            <div id="panel-tax" class="w-full p-6 transition-all duration-300">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                    </svg>
-                                    GST Tax Rates & Details
-                                </h3>
-                                <div id="tax-details" class="space-y-6">
-                                    <!-- Default state -->
-                                    <div class="text-center py-8 text-gray-400">
-                                        <svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <p class="text-sm">Select code to view tax details</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
                     </div>
                     </div>
                 </div>
-
             </div>
+
+            <!-- Full Width Results Card - Separate Below -->
+            <div class="w-full mt-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="flex flex-col min-h-[500px] hidden bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 overflow-hidden" id="results-panel">
+
+                        <!-- Search Summary Header Card -->
+                        <div class="px-6 py-5 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 flex justify-between items-center">
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-900" id="results-title">Search Results for HSN: 03024000</h2>
+                                <p class="text-sm text-gray-600 mt-1">Showing classification and tax rate details</p>
+                            </div>
+                        </div>
+
+                        <!-- Row 1 - Hierarchy Tree (Classification) -->
+                        <div id="panel-classification" class="w-full p-6 transition-all duration-300 border-b border-gray-200">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                </svg>
+                                Classification Hierarchy
+                            </h3>
+                            <div id="hierarchy-tree" class="space-y-3">
+                                <!-- Default state -->
+                                <div class="text-center py-8 text-gray-400">
+                                    <svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                    </svg>
+                                    <p class="text-sm">Search to view hierarchy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 - Tax Details (Tax Rates) -->
+                        <div id="panel-tax" class="w-full p-6 transition-all duration-300">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                                GST Tax Rates & Details
+                            </h3>
+                            <div id="tax-details" class="space-y-6">
+                                <!-- Default state -->
+                                <div class="text-center py-8 text-gray-400">
+                                    <svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <p class="text-sm">Select code to view tax details</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
         <!-- Floating elements -->
         <div id="hero-floating-elements">
@@ -416,6 +419,7 @@ schemaData: |
             <div class="absolute bottom-40 left-20 w-24 h-24 rounded-full float-animation" style="background-color: rgba(71, 66, 239, 0.14); animation-delay: -3s;"></div>
         </div>
     </section>
+
 </main>
 
 <!-- GST Tax Lookup API Module -->
@@ -1404,16 +1408,6 @@ let performSACKeywordSearch;
         incrementSearchCount();
 
         try {
-            // Hide everything to focus on results
-            const heroHeader = document.getElementById('hero-header');
-            const mainToggleBar = document.getElementById('main-toggle-bar');
-            const searchInterface = document.getElementById('search-interface');
-            const floatingElements = document.getElementById('hero-floating-elements');
-            
-            if (heroHeader) heroHeader.classList.add('hidden');
-            if (mainToggleBar) mainToggleBar.classList.add('hidden');
-            if (searchInterface) searchInterface.classList.add('hidden');
-            if (floatingElements) floatingElements.classList.add('hidden');
 
             // Show the results panel
             const resultsPanel = document.getElementById('results-panel');
@@ -1477,16 +1471,6 @@ let performSACKeywordSearch;
         incrementSearchCount();
 
         try {
-            // Hide everything to focus on results
-            const heroHeader = document.getElementById('hero-header');
-            const mainToggleBar = document.getElementById('main-toggle-bar');
-            const searchInterface = document.getElementById('search-interface');
-            const floatingElements = document.getElementById('hero-floating-elements');
-            
-            if (heroHeader) heroHeader.classList.add('hidden');
-            if (mainToggleBar) mainToggleBar.classList.add('hidden');
-            if (searchInterface) searchInterface.classList.add('hidden');
-            if (floatingElements) floatingElements.classList.add('hidden');
 
             // Show the results panel
             const resultsPanel = document.getElementById('results-panel');
