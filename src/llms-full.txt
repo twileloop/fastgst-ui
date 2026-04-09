@@ -49,8 +49,8 @@ Start with a small plan, scale as you grow. All plans are managed via ConsoleDes
 #### Basic Plan
 - Price: ₹499/month
 - Duration: 30 days
-- Daily limit: 100 requests/day
-- Monthly limit: 3,000 requests/month
+- Daily limit: 50 requests/day
+- Monthly limit: 1,500 requests/month
 - Support: Priority support
 - SLA: 99.9% uptime
 
