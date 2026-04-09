@@ -789,7 +789,17 @@ let performSACKeywordSearch;
                 hsnResultsContainer.innerHTML = '<div class="px-4 py-3 text-gray-500 text-sm">No goods found matching your search</div>';
             }
         } catch (error) {
-            hsnResultsContainer.innerHTML = '<div class="px-4 py-3 text-red-500 text-sm">Search failed. Please try again.</div>';
+            if (error.apiResponse) {
+                hsnKeywordResults.classList.add('hidden');
+                const resultsPanel = document.getElementById('results-panel');
+                if (resultsPanel) {
+                    resultsPanel.classList.remove('hidden');
+                    resultsPanel.style.display = '';
+                }
+                showErrorState(error.apiResponse, true);
+            } else {
+                hsnResultsContainer.innerHTML = '<div class="px-4 py-3 text-red-500 text-sm">Search failed. Please try again.</div>';
+            }
         }
     };
 
@@ -835,7 +845,17 @@ let performSACKeywordSearch;
                 sacResultsContainer.innerHTML = '<div class="px-4 py-3 text-gray-500 text-sm">No services found matching your search</div>';
             }
         } catch (error) {
-            sacResultsContainer.innerHTML = '<div class="px-4 py-3 text-red-500 text-sm">Search failed. Please try again.</div>';
+            if (error.apiResponse) {
+                sacKeywordResults.classList.add('hidden');
+                const resultsPanel = document.getElementById('results-panel');
+                if (resultsPanel) {
+                    resultsPanel.classList.remove('hidden');
+                    resultsPanel.style.display = '';
+                }
+                showErrorState(error.apiResponse, true);
+            } else {
+                sacResultsContainer.innerHTML = '<div class="px-4 py-3 text-red-500 text-sm">Search failed. Please try again.</div>';
+            }
         }
     };
 
@@ -1064,7 +1084,7 @@ let performSACKeywordSearch;
             const resultsPanel = document.getElementById('results-panel');
             if (resultsPanel) {
                 resultsPanel.classList.remove('hidden');
-                resultsPanel.style.display = 'flex';
+                resultsPanel.style.display = '';
             }
 
             const hsnKeywordInput = document.getElementById('hsn-keyword-input');
@@ -1100,13 +1120,17 @@ let performSACKeywordSearch;
             if (taxPanel) restartAnimations(taxPanel);
 
         } catch (error) {
-            showErrorState('Invalid Search. Please try again.');
+            if (error.apiResponse) {
+                showErrorState(error.apiResponse, true);
+            } else {
+                showErrorState('Invalid Search. Please try again.');
+            }
             
             // Ensure panel is visible even on error to show error message
             const resultsPanel = document.getElementById('results-panel');
             if (resultsPanel) {
                 resultsPanel.classList.remove('hidden');
-                resultsPanel.style.display = 'flex';
+                resultsPanel.style.display = '';
             }
         }
     }
@@ -1120,7 +1144,7 @@ let performSACKeywordSearch;
             const resultsPanel = document.getElementById('results-panel');
             if (resultsPanel) {
                 resultsPanel.classList.remove('hidden');
-                resultsPanel.style.display = 'flex';
+                resultsPanel.style.display = '';
             }
 
             const sacKeywordInput = document.getElementById('sac-keyword-input');
@@ -1156,13 +1180,17 @@ let performSACKeywordSearch;
             if (taxPanel) restartAnimations(taxPanel);
 
         } catch (error) {
-            showErrorState('Invalid Search. Please try again.');
+            if (error.apiResponse) {
+                showErrorState(error.apiResponse, true);
+            } else {
+                showErrorState('Invalid Search. Please try again.');
+            }
 
             // Ensure panel is visible even on error to show error message
             const resultsPanel = document.getElementById('results-panel');
             if (resultsPanel) {
                 resultsPanel.classList.remove('hidden');
-                resultsPanel.style.display = 'flex';
+                resultsPanel.style.display = '';
             }
         }
     }
@@ -1177,14 +1205,43 @@ let performSACKeywordSearch;
     }
 
     // Show error state
-    function showErrorState(message) {
+    function showErrorState(message, isJson = false) {
         const hierarchyTree = document.getElementById('hierarchy-tree');
         const taxDetails = document.getElementById('tax-details');
 
-        const errorHTML = `<div class="text-center py-8 text-red-500"><svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p class="text-sm">${message}</p></div>`;
+        if (isJson) {
+            let formattedJson = message || 'Empty Error Response Body';
+            try { 
+                if (message) {
+                    formattedJson = JSON.stringify(JSON.parse(message), null, 2); 
+                }
+            } catch(e) {}
 
-        hierarchyTree.innerHTML = errorHTML;
-        taxDetails.innerHTML = errorHTML;
+            // Escape HTML carefully
+            const escapeHTML = str => String(str).replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+            }[tag] || tag));
+            
+            // Expand panel classification to full width to show JSON, hide tax details
+            const classPanel = document.getElementById('panel-classification');
+            const taxPanel = document.getElementById('panel-tax');
+            if (classPanel) classPanel.style.gridColumn = '1 / -1';
+            if (taxPanel) taxPanel.style.display = 'none';
+
+            const jsonHTML = `<div class="w-full text-left animate-drop-in"><h3 class="text-xl font-bold text-gray-900 mb-6 font-mono text-red-500">API Error Response</h3><pre class="text-sm border border-gray-700 p-6 rounded-xl overflow-x-auto shadow-2xl" style="background-color: #111827 !important; color: #4ade80 !important;"><code>${escapeHTML(formattedJson)}</code></pre></div>`;
+            hierarchyTree.innerHTML = jsonHTML;
+            taxDetails.innerHTML = '';
+        } else {
+            // Restore layouts
+            const classPanel = document.getElementById('panel-classification');
+            const taxPanel = document.getElementById('panel-tax');
+            if (classPanel) classPanel.style.gridColumn = '';
+            if (taxPanel) taxPanel.style.display = '';
+
+            const errorHTML = `<div class="text-center py-8 text-red-500"><svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p class="text-sm">${message}</p></div>`;
+            hierarchyTree.innerHTML = errorHTML;
+            taxDetails.innerHTML = errorHTML;
+        }
     }
 
     // Update hierarchy tree display (Dark Tree View)

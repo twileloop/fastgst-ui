@@ -44,7 +44,9 @@ const TaxLookupAPI = (function() {
             if (!response.ok) {
                 const errorText = await response.text();
                 console.error('API Error response:', errorText);
-                throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                const err = new Error(`API Error: ${response.status} ${response.statusText}`);
+                err.apiResponse = errorText;
+                throw err;
             }
 
             const data = await response.json();
@@ -181,6 +183,7 @@ const TaxLookupAPI = (function() {
                 }
             };
         } catch (error) {
+            if (error.apiResponse) throw error;
             throw new Error(`Failed to get complete HSN info: ${error.message}`);
         }
     }
@@ -207,6 +210,7 @@ const TaxLookupAPI = (function() {
                 }
             };
         } catch (error) {
+            if (error.apiResponse) throw error;
             throw new Error(`Failed to get complete SAC info: ${error.message}`);
         }
     }
