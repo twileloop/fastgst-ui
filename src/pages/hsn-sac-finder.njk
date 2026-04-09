@@ -361,18 +361,9 @@ schemaData: |
             <!-- Full Width Results Card - Separate Below -->
             <div class="w-full mt-8">
                 <div class="max-w-6xl mx-auto">
-                    <div class="flex flex-col min-h-[500px] hidden bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 overflow-hidden" id="results-panel">
-
-                        <!-- Search Summary Header Card -->
-                        <div class="px-6 py-5 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 flex justify-between items-center">
-                            <div>
-                                <h2 class="text-xl font-bold text-gray-900" id="results-title">Search Results for HSN: 03024000</h2>
-                                <p class="text-sm text-gray-600 mt-1">Showing classification and tax rate details</p>
-                            </div>
-                        </div>
-
-                        <!-- Row 1 - Hierarchy Tree (Classification) -->
-                        <div id="panel-classification" class="w-full p-6 transition-all duration-300 border-b border-gray-200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-[500px] hidden w-full" id="results-panel">
+                        <!-- Left Side - Hierarchy Tree (Classification) -->
+                        <div id="panel-classification" class="w-full min-w-0 transition-all duration-300">
                             <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                                 <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
@@ -390,8 +381,8 @@ schemaData: |
                             </div>
                         </div>
 
-                        <!-- Row 2 - Tax Details (Tax Rates) -->
-                        <div id="panel-tax" class="w-full p-6 transition-all duration-300">
+                        <!-- Right Side - Tax Details (Tax Rates) -->
+                        <div id="panel-tax" class="w-full min-w-0 transition-all duration-300">
                             <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                                 <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
@@ -1338,11 +1329,11 @@ let performSACKeywordSearch;
         const cessDisplay = cessBreakdown.toLowerCase().includes('no') || cessBreakdown === 'Not Applicable' ? 'Nil' : TaxLookupAPI.formatCurrency(cessDetail);
         
         detailsContainer.innerHTML = `
-            <!-- Main Split Layout: GST (Left) | Cess (Right) -->
-            <div class="flex flex-col lg:flex-row gap-8 mb-8">
+            <!-- Main Stacked Layout: GST (Top) | Cess (Bottom) -->
+            <div class="flex flex-col gap-6 mb-8">
                 
                 <!-- 1. GST Breakdown Card (Dark) -->
-                <div class="flex-1 bg-gray-900 rounded-3xl border border-gray-700 p-8 shadow-2xl animate-drop-in relative overflow-hidden group hover:shadow-blue-900/20 transition-shadow duration-300">
+                <div class="w-full bg-gray-900 rounded-3xl border border-gray-700 p-8 shadow-2xl animate-drop-in relative overflow-hidden group hover:shadow-blue-900/20 transition-shadow duration-300">
                     <!-- Background Glow -->
                     <div class="absolute top-0 right-0 w-64 h-64 bg-green-600/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
                     
@@ -1399,7 +1390,7 @@ let performSACKeywordSearch;
                 </div>
 
                 <!-- 2. Cess Details Card (Dark - Compact) -->
-                <div class="flex-1 bg-gray-900 rounded-3xl border border-gray-700 p-8 shadow-2xl animate-drop-in relative overflow-hidden group hover:shadow-orange-900/20 transition-shadow duration-300" style="animation-delay: 100ms">
+                <div class="w-full bg-gray-900 rounded-3xl border border-gray-700 p-8 shadow-2xl animate-drop-in relative overflow-hidden group hover:shadow-orange-900/20 transition-shadow duration-300" style="animation-delay: 100ms">
                     <!-- Background Glow -->
                     <div class="absolute top-0 left-0 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl -ml-16 -mt-16"></div>
 
@@ -1422,7 +1413,7 @@ let performSACKeywordSearch;
             </div>
 
             <!-- 3. Regulatory Meta Grid (Polished) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-drop-in" style="animation-delay: 200ms">
+            <div class="grid grid-cols-2 gap-4 animate-drop-in" style="animation-delay: 200ms">
                 <!-- Status -->
                 <div class="bg-gray-800 p-4 rounded-xl border border-gray-700 shadow-lg flex flex-col items-center justify-center relative overflow-hidden group hover:border-gray-600 transition-all">
                     <div class="absolute inset-0 bg-gradient-to-br ${taxData.is_exempted ? 'from-red-500/10 to-transparent' : 'from-emerald-500/10 to-transparent'} opacity-50"></div>
