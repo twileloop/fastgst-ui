@@ -936,9 +936,34 @@ window.showDailyLimitModal = showDailyLimitModal;
 window.closeDailyLimitModal = closeDailyLimitModal;
 
 // Initialize on page load
+// ==========================================
+// API KEY PERSISTENCE - localStorage
+// ==========================================
+function initializeAPIKeyStorage() {
+    const apiKeyInput = document.getElementById('api-key-input');
+
+    if (!apiKeyInput) return;
+
+    // Load API key from localStorage on page load
+    const savedAPIKey = localStorage.getItem('gst_api_key');
+    if (savedAPIKey) {
+        apiKeyInput.value = savedAPIKey;
+    }
+
+    // Save API key to localStorage whenever it changes
+    apiKeyInput.addEventListener('input', function() {
+        if (this.value) {
+            localStorage.setItem('gst_api_key', this.value);
+        } else {
+            localStorage.removeItem('gst_api_key');
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     _initDecoys();
     updateUsageDisplay();
+    initializeAPIKeyStorage();
 });
 
 // ==========================================
