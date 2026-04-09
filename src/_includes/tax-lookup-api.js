@@ -18,11 +18,20 @@ const TaxLookupAPI = (function() {
      * @returns {Promise} - Promise resolving to JSON response
      */
     async function makeRequest(url, options = {}) {
+        // Fetch API Key from localStorage or input field directly
+        let apiKey = '';
+        if (typeof window !== 'undefined') {
+            apiKey = localStorage.getItem('gst_api_key');
+            if (!apiKey) {
+                const inputElement = document.getElementById('api-key-input');
+                if (inputElement) apiKey = inputElement.value.trim();
+            }
+        }
+
         const requestOptions = {
             method: 'GET',
             headers: {
-                'X-API-Key': RPAK.generate(4, JSON.stringify({})),
-                'ext-headers': '--extscr=true',
+                'X-API-Key': apiKey || '',
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
