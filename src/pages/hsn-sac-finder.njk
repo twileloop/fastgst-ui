@@ -70,45 +70,52 @@ schemaData: |
                         </h1>
                     </div>
 
-                    <!-- API Promo Banner -->
-                    <div class="mb-10 flex justify-center px-4">
-                        <a href="https://www.consoledesk.in/marketplace/tax-lookup-api" target="_blank" class="relative z-20 group inline-flex flex-col sm:flex-row items-center gap-4 px-6 py-4 sm:py-3 rounded-2xl sm:rounded-full bg-white border-2 border-lime-100 shadow-xl hover:shadow-2xl hover:border-lime-300 transition-all duration-300 no-underline animate-border">
-                            
-                            <!-- Developer Icon Badge -->
-                            <div class="flex items-center gap-3">
-                                <div class="flex items-center justify-center w-10 h-10 rounded-full bg-lime-100 text-lime-700 group-hover:bg-lime-600 group-hover:text-white shadow-inner transition-all duration-500">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex flex-col items-start text-left">
-                                    <span class="text-[10px] font-bold text-lime-600 uppercase tracking-widest leading-none mb-1">Developer API</span>
-                                    <p class="text-sm sm:text-base font-bold text-gray-900 leading-tight">
-                                        Implement this search in your <span class="text-lime-700">App, Website or Software</span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Divider (Desktop only) -->
-                            <div class="hidden sm:block h-8 w-px bg-gray-200 mx-2"></div>
-
-                            <!-- CTA Section -->
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs sm:text-sm font-bold text-gray-500 group-hover:text-lime-700 transition-colors">Get API Key & Integrate</span>
-                                <div class="flex items-center justify-center w-6 h-6 rounded-full bg-lime-100 text-lime-700 group-hover:bg-lime-600 group-hover:text-white transition-all duration-300">
-                                    <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                 </div>
 
                 <!-- Compact GST Search Interface -->
                 <div class="max-w-6xl mx-auto mb-8">
 
-                    <!-- Compact Search Card -->
+                    <div class="flex gap-6 justify-center">
+                        <!-- API Configuration Card -->
+                        <div class="gst-search-card bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 relative z-20">
+                            <!-- Header -->
+                            <div class="p-4 bg-gray-100 border-b border-gray-200/50">
+                                <h2 class="text-lg font-bold text-gray-900">API Configuration</h2>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="p-6 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 border-b border-gray-200/50">
+                                <!-- API Key Section -->
+                                <div class="relative">
+                                    <!-- Section Label -->
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-600">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">API Key</h3>
+                                    </div>
+
+                                    <!-- API Key Input -->
+                                    <div class="relative">
+                                        <div class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center pointer-events-none text-gray-400">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                                            </svg>
+                                        </div>
+                                        <input
+                                            type="password"
+                                            id="api-key-input"
+                                            placeholder="Enter your API key here..."
+                                            class="w-full pl-12 pr-4 py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none bg-white shadow-md"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Compact Search Card -->
                     <div class="gst-search-card bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/50 relative z-20">
                         <!-- Main Toggle: Search Goods / Search Services -->
                         <div id="main-toggle-bar" class="p-4 bg-gray-100 border-b border-gray-200/50">
@@ -361,6 +368,7 @@ schemaData: |
                         </div>
                         </div>
                     </div>
+                    </div>
                 </div>
 
             </div>
@@ -539,6 +547,11 @@ schemaData: |
     font-size: 1.25rem;
     font-weight: bold;
     color: #059669;
+}
+
+.gst-search-card {
+    flex: 1;
+    max-width: calc(50% - 12px);
 }
 
 /* Responsive adjustments for compact design */
