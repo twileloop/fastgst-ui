@@ -417,6 +417,11 @@ schemaData: |
 <script src="/_includes/rpak.js"></script>
 <script src="/_includes/tax-lookup-api.js"></script>
 
+<!-- Syntax Highlighting CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+
 <!-- Custom Styles for Playground -->
 <style>
 /* Google-like search dropdown animations */
@@ -1195,10 +1200,19 @@ let performSACKeywordSearch;
         }
     }
 
-    // Show loading state in both panels
     function showLoadingState() {
         const hierarchyTree = document.getElementById('hierarchy-tree');
         const taxDetails = document.getElementById('tax-details');
+
+        // Restore layouts in case they were modified by JSON error view
+        const classPanel = document.getElementById('panel-classification');
+        const taxPanel = document.getElementById('panel-tax');
+        if (classPanel) {
+            classPanel.style.gridColumn = '';
+            const heading = classPanel.querySelector('h3');
+            if (heading) heading.style.display = '';
+        }
+        if (taxPanel) taxPanel.style.display = '';
 
         hierarchyTree.innerHTML = '<div class="text-center py-8 text-gray-500"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-2"></div>Loading hierarchy...</div>';
         taxDetails.innerHTML = '<div class="text-center py-8 text-gray-500"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-2"></div>Loading tax details...</div>';
@@ -1225,17 +1239,39 @@ let performSACKeywordSearch;
             // Expand panel classification to full width to show JSON, hide tax details
             const classPanel = document.getElementById('panel-classification');
             const taxPanel = document.getElementById('panel-tax');
-            if (classPanel) classPanel.style.gridColumn = '1 / -1';
+            if (classPanel) {
+                classPanel.style.gridColumn = '1 / -1';
+                const heading = classPanel.querySelector('h3');
+                if (heading) heading.style.display = 'none';
+            }
             if (taxPanel) taxPanel.style.display = 'none';
 
-            const jsonHTML = `<div class="w-full text-left animate-drop-in"><h3 class="text-xl font-bold text-gray-900 mb-6 font-mono text-red-500">API Error Response</h3><pre class="text-sm border border-gray-700 p-6 rounded-xl overflow-x-auto shadow-2xl" style="background-color: #111827 !important; color: #4ade80 !important;"><code>${escapeHTML(formattedJson)}</code></pre></div>`;
+            const jsonHTML = `<div class="w-full text-left animate-drop-in">
+                <h3 class="text-xl font-bold text-gray-900 mb-6 font-mono text-red-500">API Response</h3>
+                <div class="rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+                    <pre class="!m-0"><code class="language-json text-xs md:text-sm whitespace-pre-wrap break-words !bg-[#0d1117] !p-6">${escapeHTML(formattedJson)}</code></pre>
+                </div>
+            </div>`;
             hierarchyTree.innerHTML = jsonHTML;
+            
+            // Trigger Highlight.js
+            setTimeout(() => {
+                if (window.hljs) {
+                    const codeBlock = hierarchyTree.querySelector('code');
+                    if (codeBlock) hljs.highlightElement(codeBlock);
+                }
+            }, 10);
+            
             taxDetails.innerHTML = '';
         } else {
             // Restore layouts
             const classPanel = document.getElementById('panel-classification');
             const taxPanel = document.getElementById('panel-tax');
-            if (classPanel) classPanel.style.gridColumn = '';
+            if (classPanel) {
+                classPanel.style.gridColumn = '';
+                const heading = classPanel.querySelector('h3');
+                if (heading) heading.style.display = '';
+            }
             if (taxPanel) taxPanel.style.display = '';
 
             const errorHTML = `<div class="text-center py-8 text-red-500"><svg class="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p class="text-sm">${message}</p></div>`;
