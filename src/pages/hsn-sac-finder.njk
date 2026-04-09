@@ -1306,8 +1306,7 @@ let performSACKeywordSearch;
             }
             if (taxPanel) taxPanel.style.display = 'none';
 
-            const jsonHTML = `<div class="w-full text-left animate-drop-in">
-                <h3 class="text-xl font-bold text-gray-900 mb-6 font-mono text-red-500">API Response</h3>
+            const jsonHTML = `<div class="w-full text-left animate-drop-in mt-2">
                 <div class="rounded-xl overflow-hidden shadow-2xl border border-gray-700">
                     <pre class="!m-0"><code class="language-json text-xs md:text-sm whitespace-pre-wrap break-words !bg-[#0d1117] !p-6">${escapeHTML(formattedJson)}</code></pre>
                 </div>
