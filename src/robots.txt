@@ -5,6 +5,7 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://www.fastgst.in/sitemap.xml
+Sitemap: https://fastgst.in/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
