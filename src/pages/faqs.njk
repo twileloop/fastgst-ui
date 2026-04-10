@@ -149,10 +149,10 @@ customScripts: |
             {% for item in section.items %}
         {
             "@type": "Question",
-            "name": "{{ item.question | escape }}",
+            "name": {{ item.question | dump | safe }},
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "{{ item.answer | striptags | trim | escape }}"
+                "text": {{ item.answer | striptags | trim | dump | safe }}
             }
         }{% if not loop.last or not loop.parent.last %},{% endif %}
             {% endfor %}
