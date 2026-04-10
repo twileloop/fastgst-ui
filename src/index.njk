@@ -10,9 +10,10 @@ schemaData: |
   {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://www.fastgst.in/#organization",
       "name": "FastGST.in",
+      "alternateName": "FastGST",
       "legalName": "FastGST.in",
-      "description": "FastGST provides a centralized GST Tax Lookup REST API for India, offering HSN & SAC code search, tax rate retrieval, and classification hierarchy data for developers and businesses.",
       "url": "https://www.fastgst.in/",
       "logo": "https://www.fastgst.in/images/fastgst.webp",
       "foundingDate": "2024",
@@ -35,7 +36,26 @@ schemaData: |
       "sameAs": [
           "https://www.consoledesk.in/marketplace/tax-lookup-api",
           "https://docs.taxlookupapi.fastgst.in"
-      ]
+      ],
+      "description": "FastGST provides a centralized GST Tax Lookup REST API for India, offering HSN & SAC code search, tax rate retrieval, and classification hierarchy data."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "FastGST.in",
+      "url": "https://www.fastgst.in/",
+      "description": "GST Tax Rates API for India – Look up HSN codes, SAC codes, tax rates, and classification hierarchies",
+      "publisher": {
+          "@id": "https://www.fastgst.in/#organization"
+      },
+      "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.fastgst.in/hsn-sac-finder/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+      }
   }
   </script>
 
@@ -48,10 +68,8 @@ schemaData: |
       "operatingSystem": "Any",
       "description": "REST API for intelligent HSN/SAC fuzzy searches, hierarchy traversals, GST tax breakdowns, and cess information for India's GST ecosystem",
       "url": "https://www.fastgst.in/",
-      "provider": {
-          "@type": "Organization",
-          "name": "FastGST.in",
-          "url": "https://www.fastgst.in/"
+      "author": {
+          "@id": "https://www.fastgst.in/#organization"
       },
       "offers": {
           "@type": "AggregateOffer",
@@ -75,74 +93,14 @@ schemaData: |
   <script type="application/ld+json">
   {
       "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-          {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.fastgst.in/"
-          }
-      ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "FastGST.in",
-      "url": "https://www.fastgst.in/",
-      "description": "GST Tax Rates API for India – Look up HSN codes, SAC codes, tax rates, and classification hierarchies"
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-      "@context": "https://schema.org",
       "@type": "WebAPI",
       "name": "FastGST HSN & SAC Lookup API",
       "description": "REST API for HSN & SAC code lookup, GST tax rate retrieval, and classification hierarchy traversal. Updated from CBIC and GST Council notifications.",
       "url": "https://api.taxlookup.fastgst.in/swagger/index.html",
       "provider": {
-          "@type": "Organization",
-          "name": "FastGST.in",
-          "url": "https://www.fastgst.in/"
+          "@id": "https://www.fastgst.in/#organization"
       },
       "documentation": "https://docs.taxlookupapi.fastgst.in"
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://www.fastgst.in/#organization",
-      "name": "FastGST.in",
-      "alternateName": "FastGST",
-      "url": "https://www.fastgst.in",
-      "logo": "https://www.fastgst.in/images/fastgst.webp",
-      "description": "FastGST provides a centralized GST Tax Lookup REST API for India, offering HSN & SAC code search, tax rate retrieval, and classification hierarchy data.",
-      "foundingDate": "2024",
-      "founder": {
-          "@type": "Person",
-          "name": "Sangeeth Nandakumar"
-      },
-      "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "IN"
-      },
-      "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+91-7012129961",
-          "contactType": "customer service",
-          "email": "twileloop@outlook.com",
-          "availableLanguage": "English"
-      },
-      "sameAs": [
-          "https://www.consoledesk.in/marketplace/tax-lookup-api",
-          "https://docs.taxlookupapi.fastgst.in"
-      ]
   }
   </script>
 
@@ -153,7 +111,6 @@ schemaData: |
       "name": "HSN Code Lookup API",
       "description": "REST API service for searching HSN codes, finding GST rates, and validating tax classifications",
       "provider": {
-          "@type": "Organization",
           "@id": "https://www.fastgst.in/#organization"
       },
       "serviceType": "Developer API",
