@@ -1,0 +1,582 @@
+---
+layout: base.njk
+permalink: /invoicing/
+title: Free GST Invoicing App for Freelancers & SMBs | FastGST
+description: Create & share GST compliant invoices in 30 seconds. A single-purpose tool to generate PDF invoices, add UPI QR codes, and share via WhatsApp.
+keywords: GST invoicing app, free GST invoice, UPI QR invoice, WhatsApp invoice sharing, GSTR-1 export, freelancer invoicing India
+canonical: /invoicing/
+preloadFonts: true
+schemaData: |
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "FastGST Invoicing",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Create & share GST compliant invoices in 30 seconds with WhatsApp sharing and UPI QR integration.",
+      "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+      }
+  }
+  </script>
+customStyles: |
+  .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  .glass-card-dark {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+  }
+  .gradient-text {
+      background: linear-gradient(135deg, #a855f7, #ec4899, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+  }
+  .gradient-bg-hero {
+      background: linear-gradient(to bottom right, #0f172a, #1e1b4b, #31135e);
+  }
+  .pulse-border {
+      animation: pulse-border 2s infinite;
+  }
+  @keyframes pulse-border {
+      0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(168, 85, 247, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+  }
+  .floating-mockup {
+      animation: float-mockup 6s ease-in-out infinite;
+  }
+  @keyframes float-mockup {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(1deg); }
+  }
+  .strikethrough {
+      text-decoration: line-through;
+      color: rgba(255, 255, 255, 0.4);
+  }
+---
+
+<main class="overflow-x-hidden bg-gray-50">
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 gradient-bg-hero text-white overflow-hidden">
+        <!-- Abstract gradient blobs -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-purple-600 opacity-20 blur-[100px]"></div>
+            <div class="absolute bottom-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-pink-600 opacity-20 blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-pink-300 text-sm font-semibold mb-8 border border-white/10 backdrop-blur-md">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-pink-500"></span>
+                    </span>
+                    Coming Soon: The 30-Second Invoice Engine
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                    The GST Invoice Generator for People Who <br class="hidden md:block"/> <span class="gradient-text">Hate GST.</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto font-light">
+                    Stop wrestling with complex accounting suites. We're building a scalpel, not a Swiss Army Knife. Create, share to WhatsApp, and get paid via UPI in exactly 30 seconds.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg hover:from-purple-500 hover:to-pink-500 transition-all transform hover:scale-105 pulse-border shadow-lg shadow-purple-500/30 w-full sm:w-auto">
+                        Join the Waitlist
+                    </button>
+                    <button class="px-8 py-4 rounded-xl bg-white/10 text-white font-bold text-lg hover:bg-white/20 transition-all border border-white/20 backdrop-blur-md w-full sm:w-auto flex items-center justify-center gap-2">
+                        Try Interactive Demo
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">No setup wizards. No credit card required.</p>
+            </div>
+
+            <!-- DASHBOARD MOCKUP -->
+            <div class="mt-20 relative max-w-5xl mx-auto floating-mockup">
+                <div class="glass-card-dark rounded-2xl p-2 md:p-4 shadow-2xl relative">
+                    <!-- Browser Chrome -->
+                    <div class="flex items-center gap-2 mb-4 px-2 w-full border-b border-white/10 pb-3">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="mx-auto text-xs text-gray-400 opacity-60 font-mono">app.fastgst.in/invoicing</div>
+                    </div>
+                    
+                    <!-- App UI Mockup -->
+                    <div class="bg-gray-900/80 rounded-xl overflow-hidden border border-gray-800 flex flex-col md:flex-row min-h-[400px]">
+                        <!-- Sidebar / List -->
+                        <div class="w-full md:w-1/3 border-r border-gray-800 p-6 flex flex-col bg-gray-900">
+                            <div class="mb-8">
+                                <h3 class="text-gray-400 text-sm font-medium uppercase tracking-wider mb-1">Unpaid Value</h3>
+                                <div class="text-4xl font-black text-red-500">₹84,500<span class="text-lg text-red-400/80">.00</span></div>
+                            </div>
+                            
+                            <button class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-lg mb-6 shadow-lg shadow-indigo-600/20 transition-colors flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                Create GST Invoice
+                            </button>
+                            
+                            <div class="relative mb-6">
+                                <input type="text" placeholder="Search client or amount..." class="w-full bg-gray-800 border-none rounded-lg py-2 pl-10 pr-4 text-sm text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500">
+                                <svg class="w-4 h-4 text-gray-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                            
+                            <div class="flex-1 overflow-y-auto pr-2 space-y-3">
+                                <!-- Invoice Item -->
+                                <div class="p-3 bg-gray-800/60 rounded-lg border border-gray-700/50 hover:border-indigo-500/50 cursor-pointer transition-colors">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="font-medium text-white truncate">TechNova Solutions</div>
+                                        <div class="text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 font-medium">Sent</div>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <div class="text-xs text-gray-400">INV/26-27/042</div>
+                                        <div class="font-bold text-gray-200">₹42,000</div>
+                                    </div>
+                                </div>
+                                <div class="p-3 rounded-lg border border-transparent hover:bg-gray-800/40 cursor-pointer transition-colors">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="font-medium text-gray-300 truncate">Acme Corp</div>
+                                        <div class="text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 font-medium">Paid</div>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <div class="text-xs text-gray-500">INV/26-27/041</div>
+                                        <div class="font-medium text-gray-400">₹15,200</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Main Area / Preview -->
+                        <div class="w-full md:w-2/3 p-6 bg-gray-950 flex flex-col relative overflow-hidden">
+                            <!-- Floating decorative element for magic feel -->
+                            <div class="absolute top-4 right-4 bg-indigo-500/20 text-indigo-300 text-xs px-3 py-1 rounded-full border border-indigo-500/30 flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                Auto-calculating IGST
+                            </div>
+                            
+                            <div class="mb-6 mt-4">
+                                <label class="block text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">Billed To (Auto-fetched via GSTIN)</label>
+                                <div class="flex items-center justify-between bg-gray-900 p-4 border border-gray-800 rounded-lg">
+                                    <div>
+                                        <div class="font-bold text-white text-lg">TechNova Solutions Pvt Ltd</div>
+                                        <div class="text-sm text-gray-400">27AADCT1234E1Z5 • Maharashtra</div>
+                                    </div>
+                                    <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-500 hover:text-white cursor-pointer">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">Items</label>
+                            <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                                <input type="text" value="Web Development Services (April)" class="flex-1 bg-gray-900 border border-gray-800 rounded-lg p-3 text-white focus:outline-none focus:border-indigo-500">
+                                <div class="flex gap-3">
+                                    <input type="text" value="35,593.22" class="w-28 bg-gray-900 border border-gray-800 rounded-lg p-3 text-white focus:outline-none focus:border-indigo-500 text-right">
+                                    <div class="w-16 bg-gray-800 border-none rounded-lg p-3 text-gray-400 flex items-center justify-center font-medium">18%</div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-auto border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between">
+                                <div>
+                                    <div class="text-sm text-gray-400">Total with 18% IGST</div>
+                                    <div class="text-2xl font-black text-white">₹42,000.00</div>
+                                </div>
+                                <div class="flex gap-3 mt-4 sm:mt-0 w-full sm:w-auto">
+                                    <button class="flex-1 sm:flex-none px-4 py-2 border border-gray-700 hover:bg-gray-800 rounded-lg text-white font-medium transition-colors">
+                                        Preview PDF
+                                    </button>
+                                    <button class="flex-1 sm:flex-none px-6 py-2 bg-[#25D366] hover:bg-[#1ebe5d] rounded-lg text-white font-bold transition-colors shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                        Share
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave transition to next section -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg class="w-full h-12 md:h-24 text-gray-50 drop-shadow-sm" preserveAspectRatio="none" viewBox="0 0 1440 120" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,42.7C1120,32,1280,32,1360,32L1440,32L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- THE PROBLEM SECTION -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Why use a heavy ERP when all you want is to <span class="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-md transform -skew-x-12 inline-block">get paid?</span></h2>
+                <p class="text-xl text-gray-600">The current options (Zoho, Vyapar) are built for accountants and stock management. We built FastGST for people who just want to send a bill and collect money.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Competitors -->
+                <div class="bg-white rounded-2xl p-8 shadow-md border border-gray-200">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Traditional Software</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start text-gray-500">
+                            <svg class="w-5 h-5 text-red-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="strikethrough">Mandatory 15-step setup wizard</span>
+                        </li>
+                        <li class="flex items-start text-gray-500">
+                            <svg class="w-5 h-5 text-red-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="strikethrough">Complex inventory menus</span>
+                        </li>
+                        <li class="flex items-start text-gray-500">
+                            <svg class="w-5 h-5 text-red-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="strikethrough">Manual tax rate lookups</span>
+                        </li>
+                        <li class="flex items-start text-gray-500">
+                            <svg class="w-5 h-5 text-red-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="strikethrough">Forces you to enter client addresses manually</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Us -->
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 shadow-lg border border-indigo-100 ring-2 ring-indigo-500 ring-opacity-20 transform md:-translate-y-4">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-indigo-900">The FastGST Scalpel</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="bg-indigo-200/50 p-1 rounded-full mr-3 mt-0.5">
+                                <svg class="w-4 h-4 text-indigo-700" text-red-400 fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-800 font-medium">Guest mode for your first invoice (No login needed)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-indigo-200/50 p-1 rounded-full mr-3 mt-0.5">
+                                <svg class="w-4 h-4 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-800 font-medium">Enter GSTIN → Grabs name & address automatically</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-indigo-200/50 p-1 rounded-full mr-3 mt-0.5">
+                                <svg class="w-4 h-4 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-800 font-medium">Auto-calculates states, CGST vs IGST instantly</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-indigo-200/50 p-1 rounded-full mr-3 mt-0.5">
+                                <svg class="w-4 h-4 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-800 font-medium">Client-side instant PDF & UPI QR embedding</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS (30 SECONDS) -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-sm font-bold tracking-widest text-indigo-600 uppercase mb-3">The Workflow</h2>
+                <h3 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">From blank to sent in <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">30 seconds flat.</span></h3>
+            </div>
+
+            <div class="space-y-16 lg:space-y-32">
+                <!-- Step 1 -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <div class="lg:w-1/2 order-2 lg:order-1 relative group">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-95 group-hover:scale-100"></div>
+                        <div class="relative rounded-2xl shadow-xl w-full border border-gray-200 bg-white overflow-hidden transform transition-transform group-hover:-translate-y-1">
+                            <div class="bg-gray-50 border-b border-gray-200 px-4 py-2 flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Client GSTIN</label>
+                                    <div class="relative">
+                                        <input type="text" value="27AADCT1234E1Z5" class="w-full bg-white border border-indigo-200 rounded-lg py-3 px-4 text-gray-900 font-mono text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" readonly>
+                                        <div class="absolute right-3 top-3.5 bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded flex items-center gap-1">
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Valid
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-y-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-50 relative overflow-hidden">
+                                    <!-- Scanning effect line -->
+                                    <div class="absolute top-0 left-0 w-full h-0.5 bg-indigo-500/50 shadow-[0_0_8px_2px_rgba(99,102,241,0.5)] animate-[scan_2s_ease-in-out_infinite]"></div>
+                                    <style>
+                                        @keyframes scan {
+                                            0% { top: 0; opacity: 0; }
+                                            10% { opacity: 1; }
+                                            90% { opacity: 1; }
+                                            100% { top: 100%; opacity: 0; }
+                                        }
+                                    </style>
+                                    <div>
+                                        <div class="text-[10px] uppercase font-bold text-indigo-400 mb-0.5">Auto-Fetched Legal Name</div>
+                                        <div class="text-sm font-bold text-gray-900">TechNova Solutions Private Limited</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] uppercase font-bold text-indigo-400 mb-0.5">Principal Place of Business</div>
+                                        <div class="text-sm text-gray-700 leading-tight">14, Ground Floor, Cyber Park, Bandra Kurla Complex,<br/>Bandra East, Mumbai, Maharashtra 400051</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl font-black mb-6">1</div>
+                        <h4 class="text-3xl font-bold text-gray-900 mb-4">The "GSTIN Magic"</h4>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-6">Don't type addresses ever again. Paste your client's GSTIN and we automatically fetch their Legal Name, Trade Name, and Principal Place of Business directly from Government routing nodes.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <div class="lg:w-1/2">
+                        <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl font-black mb-6">2</div>
+                        <h4 class="text-3xl font-bold text-gray-900 mb-4">Smart Defaults & Logic</h4>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-6">Our engine checks your state vs the client's state. It knows instantly whether to apply split CGST/SGST or unified IGST. It remembers your last HSN code and auto-increments your invoice number.</p>
+                        <p class="text-lg font-medium text-purple-600 bg-purple-50 px-4 py-2 rounded-lg inline-block">100% Tax Compliant Rounding inbuilt.</p>
+                    </div>
+                    <div class="lg:w-1/2 relative group">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-95 group-hover:scale-100"></div>
+                        <div class="relative rounded-2xl shadow-xl w-full border border-gray-200 bg-white overflow-hidden transform transition-transform group-hover:-translate-y-1">
+                            <div class="bg-gray-50 border-b border-gray-200 px-4 py-2 flex items-center justify-between">
+                                <div class="flex gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+                                </div>
+                                <div class="text-[10px] font-bold tracking-widest text-purple-600 uppercase">Live Calculator</div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-4 border-b border-gray-100 pb-4">
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-1">Your State</div>
+                                        <div class="font-semibold text-gray-900 bg-gray-100 px-2 py-1 rounded">27 - Maharashtra</div>
+                                    </div>
+                                    <svg class="w-5 h-5 text-purple-500 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                                    <div>
+                                        <div class="text-xs text-gray-500 mb-1">Client State</div>
+                                        <div class="font-semibold text-gray-900 bg-gray-100 px-2 py-1 rounded">27 - Maharashtra</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 rounded-xl p-4 border border-purple-100">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="text-sm font-medium text-purple-900">Taxable Value</span>
+                                        <span class="text-sm font-mono text-purple-900">₹8,474.58</span>
+                                    </div>
+                                    <div class="space-y-2 border-t border-purple-200/50 pt-2 mb-3">
+                                        <div class="flex justify-between items-center bg-white/50 px-2 py-1.5 rounded">
+                                            <span class="text-xs font-semibold text-purple-700 flex items-center gap-1">
+                                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                                CGST (9%)
+                                            </span>
+                                            <span class="text-xs font-mono text-purple-800">₹762.71</span>
+                                        </div>
+                                        <div class="flex justify-between items-center bg-white/50 px-2 py-1.5 rounded">
+                                            <span class="text-xs font-semibold text-purple-700 flex items-center gap-1">
+                                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                                SGST (9%)
+                                            </span>
+                                            <span class="text-xs font-mono text-purple-800">₹762.71</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center border-t border-purple-200 pt-3">
+                                        <span class="text-sm font-bold text-gray-900">Total Invoice Value</span>
+                                        <span class="text-xl font-black font-mono text-gray-900">₹10,000.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <div class="lg:w-1/2 order-2 lg:order-1 relative group">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-green-100 to-teal-100 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-95 group-hover:scale-100"></div>
+                        <div class="relative rounded-2xl shadow-xl w-full border border-gray-200 bg-[#EFEAE2] overflow-hidden transform transition-transform group-hover:-translate-y-1">
+                            <!-- WhatsApp Header -->
+                            <div class="bg-[#008069] px-4 py-3 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-xs">TS</div>
+                                <div class="flex-1">
+                                    <div class="text-white font-semibold text-sm leading-tight">TechNova Solutions</div>
+                                    <div class="text-white/70 text-xs">online</div>
+                                </div>
+                            </div>
+                            <!-- Chat Body -->
+                            <div class="p-6 bg-[url('https://static.whatsapp.net/rsrc.php/v3/yO/r/FsWUqsRwHO3.png')] relative h-64 flex flex-col justify-end">
+                                <div class="bg-[#d9fdd3] p-3 rounded-lg rounded-tr-none shadow-sm max-w-[85%] self-end relative">
+                                    <div class="flex items-center gap-2 mb-2 pb-2 border-b border-green-200/50">
+                                        <div class="bg-red-500 text-white rounded px-1.5 py-0.5 text-[10px] font-bold">PDF</div>
+                                        <div class="text-sm font-medium text-gray-800 truncate">INV-26-27-042.pdf</div>
+                                    </div>
+                                    <p class="text-sm text-gray-800 leading-snug mb-1">Hi team, here is the invoice for ₹42,000.00 for Web Dev services. You can scan the QR inside the PDF to pay via UPI.</p>
+                                    <div class="flex justify-end items-center gap-1 mt-1">
+                                        <span class="text-[10px] text-gray-500">10:42 AM</span>
+                                        <svg class="w-3.5 h-3.5 text-blue-500" viewBox="0 0 18 18"><path fill="currentColor" d="M17.394 5.035L15.932 3.5m0 0l-9.664 9.664c-.161.161-.396.225-.615.174l-2.613-.653a.583.583 0 01-.39-.757l1.01-2.525c.08-.201.23-.37.42-.48l9.842-6.561a1.2 1.2 0 011.666 1.666z"></path><path fill="currentColor" d="M12.43 3.328l2.25 2.25m-2.25-2.25l-1.06-1.06a1.5 1.5 0 00-2.122 0l-1.06 1.06m4.242 4.242l-1.06 1.061m1.06-1.061l-5.657 5.657c-.16.16-.388.232-.609.19l-2.22-.423a.5.5 0 01-.354-.658l.758-2.274c.063-.19.18-.352.336-.464l5.346-4.108m2.4 2.4l1.06-1.06a1.5 1.5 0 000-2.122l-1.06-1.06"></path><path fill="currentColor" d="M15.932 3.5l-2.42-2.42a1.2 1.2 0 00-1.697 0l-.821.82a.5.5 0 000 .708l3.41 3.41a.5.5 0 00.707 0l.82-.821a1.2 1.2 0 000-1.697z"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2">
+                        <div class="w-16 h-16 bg-[#25D366]/20 text-[#25D366] rounded-2xl flex items-center justify-center text-3xl font-black mb-6">3</div>
+                        <h4 class="text-3xl font-bold text-gray-900 mb-4">Dynamic UPI QR & WhatsApp Share</h4>
+                        <p class="text-xl text-gray-600 leading-relaxed mb-6">Your final PDF instantly embeds a dynamic UPI QR code containing the exact invoice value—your client just scans and pays. Then, send the invoice directly via WhatsApp link with one click.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="py-24 bg-gray-900 text-white relative">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTU0LjYyNyAwTDYwIDUuMzczdjU0LjYyN3oiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+')] mix-blend-overlay"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Pricing that respects your margin.</h2>
+                <p class="text-xl text-gray-400">Micro-pricing for freelancers and solo businesses.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Free Plan -->
+                <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700 hover:border-gray-500 transition-colors">
+                    <h3 class="text-2xl font-bold text-white mb-2">The Hook</h3>
+                    <div class="text-4xl font-black mb-1">₹0</div>
+                    <p class="text-gray-400 text-sm mb-6 pb-6 border-b border-gray-700">Perfect for side-hustles.</p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            3 Invoices per month
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Standard PDF Template
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Manual WhatsApp sharing
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-3 rounded-lg bg-gray-700 text-white font-semibold hover:bg-gray-600 transition-colors">Join Waitlist</button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="bg-gradient-to-b from-indigo-900 to-indigo-800 rounded-2xl p-8 border border-indigo-500 shadow-2xl shadow-indigo-500/20 transform md:-translate-y-4 relative">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Most Popular</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Professional</h3>
+                    <div class="text-4xl font-black mb-1">₹1,999<span class="text-lg font-medium text-indigo-300">/year</span></div>
+                    <p class="text-indigo-200 text-sm mb-6 pb-6 border-b border-indigo-500/50">For busy full-time freelancers.</p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-white">
+                            <svg class="w-5 h-5 text-indigo-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Unlimited invoices
+                        </li>
+                        <li class="flex items-center text-white">
+                            <svg class="w-5 h-5 text-indigo-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Remove FastGST Branding
+                        </li>
+                        <li class="flex items-center text-white">
+                            <svg class="w-5 h-5 text-indigo-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Custom Logo integration
+                        </li>
+                        <li class="flex items-center text-white">
+                            <svg class="w-5 h-5 text-indigo-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Dynamic UPI QR embedding
+                        </li>
+                        <li class="flex items-center text-white">
+                            <svg class="w-5 h-5 text-indigo-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            "Paid/Unpaid" visual tracking
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-3 rounded-lg bg-indigo-500 text-white font-bold hover:bg-indigo-400 transition-colors shadow-lg shadow-indigo-500/50">Join Waitlist</button>
+                </div>
+
+                <!-- CA Plan -->
+                <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700 hover:border-gray-500 transition-colors">
+                    <h3 class="text-2xl font-bold text-white mb-2">Tax-Ready</h3>
+                    <div class="text-4xl font-black mb-1">₹4,999<span class="text-lg font-medium text-gray-400">/year</span></div>
+                    <p class="text-gray-400 text-sm mb-6 pb-6 border-b border-gray-700">For agencies & small boutiques.</p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Everything in Professional
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            One-click GSTR-1 JSON Export
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Monthly Excel Summary for CA
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-5 h-5 text-pink-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Priority WhatsApp Support
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-3 rounded-lg bg-gray-700 text-white font-semibold hover:bg-gray-600 transition-colors">Join Waitlist</button>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center text-gray-500 text-sm max-w-2xl mx-auto">
+                <p><strong>Note for E-invoicing:</strong> We intentionally do not support IRN/QR e-invoicing. This product is strictly for freelancers and businesses with a turnover under ₹5 Cr to keep the experience lightning fast and simple.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-indigo-50 opacity-50"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-pink-50 opacity-50"></div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">Stop dreading the invoice.</h2>
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">Join a waitlist of modern freelancers treating billing not as an accounting chore, but as a quick notification.</p>
+            
+            <div class="bg-white p-2 rounded-full shadow-xl border border-gray-100 max-w-xl mx-auto flex flex-col sm:flex-row gap-2 relative z-20 focus-within:ring-2 focus-within:ring-indigo-500 transition-all">
+                <input type="email" placeholder="Enter your email address..." class="flex-1 border-none focus:ring-0 bg-transparent px-6 py-4 text-gray-900 placeholder-gray-400 rounded-full w-full">
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-full transition-colors w-full sm:w-auto mt-2 sm:mt-0 whitespace-nowrap">
+                    Get Early Access
+                </button>
+            </div>
+            
+            <p class="text-sm text-gray-400 mt-6">We'll alert you the moment we launch.</p>
+        </div>
+    </section>
+</main>
