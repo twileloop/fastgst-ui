@@ -1,275 +1,167 @@
-# FastGST.in — Full Site Content
+# FastGST — Full Site Content
 
-> This document contains comprehensive content from all pages of FastGST.in for AI/LLM consumption.
-
----
-
-## Homepage (https://www.fastgst.in/)
-
-### GST Tax Rates API
-
-FastGST simplifies GST tax rate integration by aggregating GST tax rates into a single API. Activate in ConsoleDesk and get your API-Key now
-
-### How It Works
-
-1. **Search Goods or Services**: Search by keywords to find HSN/SAC codes
-2. **Verify Hierarchy By HSN/SAC**: Dig through detailed HSN/SAC classification hierarchy
-3. **Get Tax Rates By HSN/SAC**: Retrieve GST tax rates directly by HSN/SAC code
-
-### API Endpoints
-
-The Tax Lookup API provides these REST endpoints:
-
-- `GET /search/hsn?query={keyword}` — Fuzzy search HSN codes by keyword
-- `GET /search/hsn/{code}` — Get HSN code details and hierarchy
-- `GET /search/hsn/{code}/taxes` — Get GST tax rates for HSN code
-- `GET /search/sac?query={keyword}` — Fuzzy search SAC codes by keyword
-- `GET /search/sac/{code}` — Get SAC code details and hierarchy
-- `GET /search/sac/{code}/taxes` — Get GST tax rates for SAC code
-
-Base URL: https://api.taxlookup.fastgst.in
-Authentication: API Key via `X-API-Key` header
+> This document contains the full inline content, pages, API documentation, pricing, FAQs, and policies of FastGST.in for complete, single-file LLM/AI ingestion.
 
 ---
 
-## Pricing (https://www.fastgst.in/pricing/)
+## 1. Homepage & REST API (https://www.fastgst.in/)
 
-### GST Tax Rates API Pricing
+FastGST simplifies GST tax rate integration by aggregating GST tax rates into a single developer-friendly REST API.
 
-Start with a small plan, scale as you grow. All plans are managed via ConsoleDesk.
+### Action Links & Portals
+- **API Swagger**: https://api.taxlookup.fastgst.in/swagger/index.html (Interactive sandbox to test endpoints)
+- **API Documentation**: https://docs.taxlookupapi.fastgst.in (Comprehensive integration guide)
+- **ConsoleDesk Portal**: https://www.consoledesk.in/marketplace/tax-lookup-api (Manage keys and subscriptions)
 
-#### Basic Plan
-- Price: ₹199/month
-- Duration: 30 days
-- Daily limit: 50 requests/day
-- Monthly limit: 1,500 requests/month
-- Support: Standard support
-- SLA: 99.9% uptime
+### Three-Step Core Workflow
+1. **Search Goods or Services**: Fuzzy-search keywords (e.g. "rice", "consulting") to discover relevant HSN or SAC codes.
+2. **Verify Hierarchy**: Dig through nested classification hierarchies (Chapter → Heading → Sub-heading → Tariff Item).
+3. **Get Tax Rates**: Retrieve applicable CGST, SGST, IGST rates, cess percentages, and exemption statuses.
 
-#### Standard Plan
-- Price: ₹399/month
-- Duration: 30 days
-- Daily limit: 250 requests/day
-- Monthly limit: 7,500 requests/month
-- Support: Priority support
-- SLA: 99.9% uptime
+### REST API Reference
+- **Base URL**: `https://api.taxlookup.fastgst.in`
+- **Authentication**: API Key passed via custom header `X-API-Key`
 
-#### Pro Plan (Recommended)
-- Price: ₹899/month
-- Duration: 30 days
-- Daily limit: 2,000 requests/day
-- Monthly limit: 60,000 requests/month
-- Support: Priority support
-- SLA: 99.9% uptime
-
-#### Premium Plan
-- Price: ₹1,800/month
-- Duration: 30 days
-- Daily limit: 4,000 requests/day
-- Monthly limit: 120,000 requests/month
-- Support: Priority support
-- SLA: 99.9% uptime
-
-All plans & activations are managed via ConsoleDesk (https://www.consoledesk.in/marketplace/tax-lookup-api).
-Login to ConsoleDesk to check for quarterly or annual plans if available.
-For custom plans or bulk-operations with higher quota & tailored limits, email: twileloop@outlook.com
+#### Endpoints
+- `GET /search/hsn?query={keyword}` — Fuzzy keyword search for HSN codes (goods)
+- `GET /search/hsn/{code}` — Fetch full classification details & hierarchy for a specific HSN code
+- `GET /search/hsn/{code}/taxes` — Get GST tax rates & compensation cess details for a specific HSN code
+- `GET /search/sac?query={keyword}` — Fuzzy keyword search for SAC codes (services)
+- `GET /search/sac/{code}` — Fetch full classification details & hierarchy for a specific SAC code
+- `GET /search/sac/{code}/taxes` — Get GST tax rates & compensation cess details for a specific SAC code
 
 ---
 
-## Free HSN/SAC Lookup Tool (https://www.fastgst.in/hsn-sac-finder/)
+## 2. API Playground and Free HSN/SAC Rate Lookup Tool (https://www.fastgst.in/hsn-sac-finder/)
 
-### Free GST Tax Rate Checker
+A borderless, compact Neo-Brutalist web utility designed to test key features and fetch tax rates directly.
 
-A free online tool to search HSN codes, SAC codes, and find GST tax rates. Features:
-
-- **Search Goods by Keyword**: Enter product names like "rice", "mobile phone", "cotton fabric" to find HSN codes
-- **Search by HSN Code**: Enter 8-digit HSN tariff item code to look up classification and tax rates
-- **Search Services by Keyword**: Enter service names like "consulting", "transportation", "hotel" to find SAC codes
-- **Search by SAC Code**: Enter 6-digit SAC code to look up classification and tax rates
-
-Results show:
-- Full classification hierarchy (Chapter → Heading → Sub-heading → Tariff Item)
-- GST tax rates (IGST, CGST, SGST percentages)
-- Compensation cess details if applicable
-- Conditions and exemptions
-
-Daily limit: 5 free searches per day. Get an API key for higher quotas.
-
-Developers can integrate this same search into their own applications using the FastGST Tax Lookup API.
+### User Interface Elements
+1. **API Configuration Header**:
+   - **API Key Field**: A compact password-style input with an icon to paste and securely save keys in localStorage.
+   - **API Usage Counters**: Live inline progress bars for "Today's Usage" and "Total Usage" with mathematically centered spinning sync/refresh indicators.
+2. **Compact Search Card**:
+   - **Search Goods Tab / Search Services Tab**: Bold borders, flat offset shadows, and magnifying search glass icons.
+   - **Search Input Mode**:
+     - *Goods Panel*: Keyword search and direct HSN Code Lookup (8-digit validator) aligned side-by-side and separated by a responsive "Or" divider.
+     - *Services Panel*: Keyword search and direct SAC Code Lookup (6-digit validator) aligned side-by-side and separated by a responsive "Or" divider.
+3. **Results Section**:
+   - **Left Column**: Interactive nested hierarchy tree (Chapter → Heading → Sub-heading → Tariff Item).
+   - **Right Column**: Comprehensive tax breakdown (CGST, SGST, IGST percentages, cess rates, and statutory exemption notes).
 
 ---
 
-## FAQs (https://www.fastgst.in/faqs/)
+## 3. Subscription & Pricing Plans (https://www.fastgst.in/pricing/)
 
-### HSN & SAC Code & GST Rate Lookup
+Subscriptions are valid for 30 days and are managed entirely via ConsoleDesk. All active subscription tiers feature a 99.9% uptime SLA.
 
-**Q: How to Check HSN & SAC Code for a Product?**
-A: Use the free HSN/SAC Finder tool at https://www.fastgst.in/hsn-sac-finder/ or integrate the API. Search by product keywords like "mobile phone", "laptop", or "consulting services" to find the correct HSN classification and GST rate.
+### Subscription Tiers
+- **Basic Plan (₹199 / month)**
+  - Daily limit: 50 requests/day
+  - Monthly limit: 1,500 requests/month
+  - Support: Standard email support
+  - Ideal for: Individuals, initial API testing, and hobbyist projects.
+- **Standard Plan (₹399 / month)**
+  - Daily limit: 250 requests/day
+  - Monthly limit: 7,500 requests/month
+  - Support: Priority support
+  - Ideal for: Lightweight applications and emerging startups.
+- **Pro Plan (₹899 / month — Best Value)**
+  - Daily limit: 2,000 requests/day
+  - Monthly limit: 60,000 requests/month
+  - Support: Priority support
+  - Ideal for: Growing SaaS platforms and active business systems.
+- **Premium Plan (₹1,800 / month — Highest Quota)**
+  - Daily limit: 4,000 requests/day
+  - Monthly limit: 120,000 requests/month
+  - Support: Priority support
+  - Ideal for: High-volume production workloads and large enterprise applications.
 
-**Q: How to Find GST Rate Using HSN & SAC Code?**
-A: Enter the HSN code in the free lookup tool or use the API endpoint. For example, enter "8517" to find GST rates for telephones. The system returns the applicable GST rate (5%, 12%, 18%, or 28%) along with compensation cess if applicable.
-
-**Q: How to Validate HSN/SAC Codes?**
-A: Use the HSN/SAC Code Validator to check if a code is valid. Enter the full HSN (8 digits) or SAC (6 digits) code to verify its existence and get complete classification details.
-
-**Q: What is HSN Code and How Does It Relate to GST?**
-A: HSN (Harmonized System of Nomenclature) codes are 8-digit codes used to classify goods for taxation. SAC (Services Accounting Code) codes classify services. GST rates in India are determined based on these codes.
-
-### General Questions
-
-**Q: What is the Tax Lookup API?**
-A: A REST API that allows developers and businesses to search HSN/SAC codes, navigate hierarchical structures, and retrieve GST tax rates and cess information programmatically.
-
-**Q: How It Works?**
-A: FastGST runs services 24×7 on cloud infrastructure. Automated workflows paired with human verification continuously monitor official sources for tax updates and CBIC notifications to ensure best-effort data accuracy.
-
-### API Integration & Development
-
-**Q: How to Integrate HSN & SAC Code Lookup into My Application?**
-A: Sign up at ConsoleDesk (https://www.consoledesk.in/marketplace/tax-lookup-api), get your API key, and use the REST API endpoints. See API documentation at https://docs.taxlookupapi.fastgst.in for code examples.
-
-**Q: What Programming Languages Support Your API?**
-A: The REST API works with any language that can make HTTP requests. Code examples are available for JavaScript, Python, Java, C#, PHP, Ruby, and Go.
-
-**Q: How to Search HSN & SAC Codes by Product Name?**
-A: Use the fuzzy search endpoint with product keywords. The AI-powered search understands variations and synonyms for better results.
-
-### Free Plans
-
-**Q: Any Free Plans?**
-A: Yes, a limited free plan is available to test the API. Sign up in ConsoleDesk, create an account, choose a plan, and generate an API Key.
-
-**Q: Does Free Plans Expire?**
-A: Free plan comes with daily and total limits. As long as you use within limits it's always free.
-
-### ConsoleDesk and API Keys
-
-**Q: What is ConsoleDesk?**
-A: ConsoleDesk is a centralized administration portal for managing plans, API keys, billings, usage and more. You must register in ConsoleDesk and activate 'Tax Lookup API' to start using the service.
-
-**Q: What I need to do in ConsoleDesk?**
-A: Signup/Login to ConsoleDesk → Activate 'Tax Lookup API' → Generate API Key → Use API Key to access the API.
-
-**Q: Is Plan selection and Billing managed in ConsoleDesk?**
-A: Yes, all account and billing details are managed in ConsoleDesk.
-
-**Q: Can I upgrade or downgrade plans in between?**
-A: Yes, your active plan and benefits will be lost and benefits of new plan will be applied from the same day.
-
-### GST Invoices
-
-**Q: Can I get a GST Invoice for purchases?**
-A: FastGST currently operates without GST registration under Section 22 of the CGST Act. Standard non-GST invoices can be downloaded from ConsoleDesk.
-
-### GST Rates & Compliance
-
-**Q: What are the Different GST Rate Slabs in India?**
-A: India has four main GST rate slabs: 5% (essential goods), 12% (standard rate), 18% (luxury and semi-luxury), and 28% (luxury and demerit goods). Some items are exempted (0%) and others have special rates.
-
-**Q: How to Check Compensation Cess for Products?**
-A: Certain luxury goods attract compensation cess in addition to GST. Use the HSN lookup tool or API to check both GST rate and cess amount.
-
-**Q: Latest GST Rate Changes and Updates?**
-A: The system automatically updates with the latest rate changes from CBIC notifications.
-
-### Data Accuracy and Compliance
-
-**Q: How accurate is the Tax Lookup API?**
-A: Data is aggregated from official CBIC and GST Council notifications with automated and manual verification. Users should verify all data against official government notifications for statutory compliance.
-
-**Q: Does FastGST offer any warranties?**
-A: No. Services are provided "as is" and "as available" without warranties. FastGST does not provide professional tax advisory, legal counsel, or accounting services. Users retain sole responsibility for ensuring compliance with applicable tax laws.
+### Custom Subscriptions
+Custom limits, bulk queries, or higher daily/monthly quotas can be requested by emailing `twileloop@outlook.com`.
 
 ---
 
-## About (https://www.fastgst.in/about/)
+## 4. Frequently Asked Questions (FAQs) (https://www.fastgst.in/faqs/)
 
-### About FastGST.in
+A categorized support library styled with high-contrast, interactive Neo-Brutalist accordions.
 
-FastGST provides a centralized GST Tax Lookup API designed for businesses and developers across India. The platform delivers best-effort GST tax rates, HSN/SAC codes, and classification data, enabling seamless integration into ERP systems, accounting tools, or custom applications.
+### Category 1: API Capabilities & Features
+- **What is the GST Tax Rates API?**
+  The GST Tax Rates API is a developer-friendly API that helps applications search HSN codes for goods, search SAC codes for services, fetch GST tax rates, verify classifications, and automate lookup workflows.
+- **Who can use this API?**
+  The API is designed for billing systems, ERPs, accounting platforms, e-commerce applications, SaaS systems, GST software developers, and custom business automation systems.
+- **Why would a business need this API?**
+  To automate GST classifications and rate verification. Instead of manually looking up GST data from governmental PDF schedules, systems can automate billing workflows, reducing human error.
+- **How can this API help my software?**
+  By dynamically identifying GST rates, eliminating manual HSN/SAC searches, accelerating invoice creation, and streamlining statutory reporting.
+- **What are HSN and SAC codes?**
+  HSN (Harmonised System of Nomenclature) codes classify goods, while SAC (Services Accounting Code) codes classify services under India's GST system.
+- **Can I search using normal keywords?**
+  Yes. The API supports fuzzy keyword searches. Searching for terms like "rice", "cotton", "software", or "consulting" yields accurate classifications.
+- **Can I search directly using HSN or SAC codes?**
+  Yes. If you already have a code, you can fetch its tax breakdowns, exemptions, and descriptions instantly.
+- **What kind of GST information does the API provide?**
+  It returns CGST, SGST, IGST breakups, HSN/SAC descriptions, structural classifications, exemption details, and compensation cess data.
+- **Is the API suitable for production applications?**
+  Yes. All plans are hosted in enterprise environments backed by a 99.9% uptime SLA.
+- **What authentication method does the API use?**
+  Secure API-key based authentication via the custom header `X-API-Key`.
 
-#### What We Simplify
-Identifying the correct GST rate can be challenging within India's evolving tax framework. FastGST simplifies this by providing a centralized and continuously monitored source of GST data.
+### Category 2: Getting Started & Dashboard
+- **How do I access the API?**
+  Activate a plan in ConsoleDesk, generate an API key, and begin making calls immediately.
+- **What is ConsoleDesk?**
+  ConsoleDesk is our developer management dashboard where you activate subscriptions, retrieve API keys, monitor usage quotas, and download billing invoices.
+- **Can I test the API before integrating it?**
+  Yes. FastGST offers a live API Swagger playground for direct browser testing.
+- **Can I monitor my API usage?**
+  Yes. ConsoleDesk provides live metrics showing today's usage, total monthly usage, remaining quota, and plan statuses.
+- **What happens if I exceed my API limit?**
+  API calls that exceed plan limits are restricted until the quota resets or the subscription is upgraded.
+- **Where can I find the API documentation?**
+  Comprehensive guides, Swagger models, and code recipes are available at https://docs.taxlookupapi.fastgst.in.
 
-#### Money-Back Policy
-If the service does not meet expectations, a 100% refund is provided for all legitimate cases — no questions asked.
-
-#### Community
-FastGST is built for both developers and businesses. Feedback directly shapes the roadmap.
-
-#### Made with ❤️ in India
-FastGST's mission is to make GST data accessible and useful to everyone in India.
-
----
-
-## Contact (https://www.fastgst.in/contact/)
-
-### Contact Information
-
-- Email: twileloop@outlook.com
-- Main Website: https://www.fastgst.in
-- API ConsoleDesk: https://www.consoledesk.in/marketplace/tax-lookup-api
-- Documentation: https://docs.taxlookupapi.fastgst.in
-
-For business communications, reach out via email. Tax Lookup API related enquiries should be reported through ConsoleDesk under your activation.
-
-### What We Can Help With
-- General questions about services
-- Custom Quota or Pricing needs
-- Technical issues
-- Feature requests and suggestions
-
-### Billing & Invoice Note
-FastGST currently operates without GST registration under Section 22 of the CGST Act.
-
----
-
-## Refund & Cancellation Policy (https://www.fastgst.in/refund-cancellation-policy/)
-
-Effective Date: 16 October 2025
-
-### Refund Eligibility
-Full 100% refund available for:
-- Technical issues preventing API from functioning (verified by support team)
-- Service quality concerns (no-questions-asked basis)
-
-Refunds NOT available if:
-- Using a non-paid/free plan
-- On paid plan but usage quota exhausted
-- Issue arises from misuse or third-party systems
-
-### How to Request a Refund
-- Contact: twileloop@outlook.com
-- Include account information and complaint details
-- Processing time: 5–7 business days
-- Refund via original payment method
-
-### Cancellation
-- Cancel subscription anytime through developer console
-- Cancellation prevents future billing but does not automatically trigger refund
-- Unused portion not refunded if quota consumed
+### Category 3: Plans & Pricing
+- **Which plan should I choose?**
+  Choose *Basic* for testing, *Standard* for startups, *Pro* (Best Value) for growing SaaS platforms, and *Premium* for high-throughput enterprise architectures.
+- **Can I upgrade my plan later?**
+  Yes. Upgrades or downgrades are processed instantly through ConsoleDesk.
+- **Are custom or enterprise plans available?**
+  Yes. For customized rate limits and bulk data extractions, email `twileloop@outlook.com`.
 
 ---
 
-## Privacy Policy (https://www.fastgst.in/privacy-policy/)
+## 5. About FastGST (https://www.fastgst.in/about/)
 
-Effective Date: 16 October 2025
+FastGST delivers a consolidated GST Tax Lookup API service to developers and enterprises.
 
-FastGST.in collects account/profile information, API usage data, and cookies. Data is hosted on Microsoft Azure (Central India region). Passwords are stored using bcrypt/Argon2 hashing. Data retention: account info up to 7 years, API logs 12 months, backups 90 days. FastGST does not sell or rent personal data.
-
----
-
-## Terms & Conditions (https://www.fastgst.in/terms-and-conditions/)
-
-FastGST.in is an independent data aggregator, not affiliated with GSTN or government bodies. Data accuracy is best-effort; users must verify against official gazettes. Liability is capped at fees paid in prior 3 months or ₹5,000, whichever is lower. Free tier liability is ₹0.
+- **Money-Back Guarantee**: We stand by our service. If the API fails to meet your expectations, provide a valid justification to our team for a 100% refund on any legitimate claims, no questions asked.
+- **Community-First Roadmap**: Customer feedback directly influences our data updates and endpoint structures.
+- **Origin**: Proudly built with ❤️ in India, working to democratize GST classification mapping.
 
 ---
 
-## Technical Details
+## 6. Contact & Support (https://www.fastgst.in/contact/)
 
-- Built with: Eleventy (static site generator) + Tailwind CSS
-- API: REST API with JSON responses
-- Authentication: API Key via X-API-Key header
-- Hosting: Microsoft Azure, Central India region
-- Founded: 2024
-- Founder: Sangeeth Nandakumar
+- **General & Custom Enquiries**: `twileloop@outlook.com`
+- **Technical Support**: Subscribed developers can report issues directly inside ConsoleDesk under their active plan dashboard.
+- **Statutory Billing Note**: FastGST currently operates below threshold levels without GST registration under Section 22 of the CGST Act. Non-GST invoices are generated.
+
+---
+
+## 7. Legal & Policies
+
+### Refund & Cancellation Policy (https://www.fastgst.in/refund-cancellation-policy/)
+*Effective Date: 16 October 2025*
+- **Refunds**: 100% refunds are provided for verified technical issues or overall quality concerns. Not applicable to free tiers, fully consumed quotas, or instances of account misuse. Refunds are processed in 5-7 business days.
+- **Cancellations**: Subscriptions can be canceled instantly through ConsoleDesk. This prevents future billing, but prior subscription charges are non-refundable.
+
+### Privacy Policy (https://www.fastgst.in/privacy-policy/)
+*Effective Date: 16 October 2025*
+- **Security**: Hosted securely on Microsoft Azure in the Central India region. User passwords are encrypted using strong hashing algorithms (bcrypt/Argon2).
+- **Data Retention**: Account information is retained for up to 7 years, API transaction logs are held for 12 months, and database backups are purged after 90 days. We never lease or sell data to third parties.
+
+### Terms & Conditions (https://www.fastgst.in/terms-and-conditions/)
+- **Statutory Disclaimer**: FastGST is an independent data aggregator and is not affiliated with the Goods and Services Tax Network (GSTN) or any government bodies. All data is provided on a best-effort basis. Statutory verification remains the user's sole responsibility.
+- **Liability**: Total liability for any service issues is capped at the fees paid over the previous 3 months or ₹5,000 (whichever is lower). For free plans, the liability cap is ₹0.
