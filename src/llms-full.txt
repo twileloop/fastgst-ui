@@ -43,7 +43,7 @@ Start with a small plan, scale as you grow. All plans are managed via ConsoleDes
 - Duration: 30 days
 - Daily limit: 50 requests/day
 - Monthly limit: 1,500 requests/month
-- Support: Priority support
+- Support: Standard support
 - SLA: 99.9% uptime
 
 #### Standard Plan
