@@ -141,77 +141,28 @@ customScripts: |
   </script>
 ---
 
-<!-- FAQ Schema -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        {% for section in faq.sections %}
-            {% for item in section.items %}
-        {
-            "@type": "Question",
-            "name": {{ item.question | dump | safe }},
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": {{ item.answer | striptags | trim | dump | safe }}
-            }
-        }{% if not loop.last or not loop.parent.last %},{% endif %}
-            {% endfor %}
-        {% endfor %}
-    ]
-}
-</script>
-
 <!-- Main Content -->
 <main class="pt-16 overflow-x-hidden">
     <section class="py-20 bg-gray-50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Frequently Asked Questions
-            </h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+                    Frequently Asked Questions
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Common questions about our GST Tax Lookup API
-            </p>
-        </div>
-
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-12">
-                <div class="space-y-8">
-                    {% for section in faq.sections %}
-                    <div id="faq-section-{{ section.id }}">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">{{ section.title }}</h2>
-                        <div class="space-y-4">
-                            {% for item in section.items %}
-                            <div class="faq-item bg-gray-50 rounded-xl">
-                                <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 transition-colors" onclick="toggleFAQ(this)">
-                                    <h3 class="faq-question text-lg font-semibold text-gray-900">{{ item.question }}</h3>
-                                    <svg class="faq-icon w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </button>
-                                <div class="faq-content">
-                                    <div class="faq-content-inner">
-                                        {{ item.answer | safe }}
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% endfor %}
-
-                    <!-- Still Have Questions -->
-                    <div class="mt-12 text-center p-8 bg-gray-50 rounded-xl">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
-                <p class="text-gray-600 mb-6">
-                            Can't find what you're looking for? We're here to help!
                 </p>
-                        <a href="/contact/" class="inline-block bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors">
-                    Contact Us
+            </div>
+
+            <!-- Still Have Questions -->
+            <div class="bg-white rounded-2xl border-2 border-black p-8 md:p-12 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Questions? We are here to help!</h2>
+                <p class="text-gray-600 mb-8 max-w-lg mx-auto">
+                    Our FAQ section is currently undergoing a complete update. If you need any assistance, have inquiries about tax lookup rates, or require support, please don't hesitate to reach out to us.
+                </p>
+                <a href="/contact/" class="inline-block bg-sky-200 text-black border-2 border-black px-8 py-3.5 rounded-lg font-extrabold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-sky-100 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transform transition-all duration-100 uppercase tracking-wider text-sm">
+                    Contact Us &rarr;
                 </a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
