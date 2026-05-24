@@ -31,12 +31,12 @@ FastGST provides a centralized, continuously updated GST Tax Lookup REST API. It
 
 ## Pricing Plans (Monthly)
 
-| Plan    | Price        | Daily Requests | Monthly Requests | Duration |
-|---------|-------------|----------------|------------------|----------|
-| Free    | ₹0 (FREE)   | 10/day         | 30 total         | 3 days   |
-| Basic   | ₹499/month  | 100/day        | 3,000/month      | 30 days  |
-| Pro     | ₹899/month  | 2,000/day      | 60,000/month     | 30 days  |
-| Premium | ₹1,800/month| 4,000/day      | 120,000/month    | 30 days  |
+| Plan     | Price        | Daily Requests | Monthly Requests | Duration |
+|----------|-------------|----------------|------------------|----------|
+| Basic    | ₹199/month  | 50/day         | 1,500/month      | 30 days  |
+| Standard | ₹399/month  | 250/day        | 7,500/month      | 30 days  |
+| Pro      | ₹899/month  | 2,000/day      | 60,000/month     | 30 days  |
+| Premium  | ₹1,800/month| 4,000/day      | 120,000/month    | 30 days  |
 
 All paid plans include priority support and 99.9% uptime SLA. Plans are managed via ConsoleDesk. Custom/bulk plans available via email.
 

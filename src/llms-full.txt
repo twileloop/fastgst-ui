@@ -8,7 +8,7 @@
 
 ### GST Tax Rates API
 
-FastGST simplifies GST tax rate integration by aggregating publicly available GST data into a single API. Activate in ConsoleDesk and get your API-Key.
+FastGST simplifies GST tax rate integration by aggregating GST tax rates into a single API. Activate in ConsoleDesk and get your API-Key now
 
 ### How It Works
 
@@ -38,19 +38,19 @@ Authentication: API Key via `X-API-Key` header
 
 Start with a small plan, scale as you grow. All plans are managed via ConsoleDesk.
 
-#### Free Plan
-- Price: FREE (₹0)
-- Duration: 3 days
-- Daily limit: 10 requests/day
-- Total limit: 30 requests total
-- Support: Limited
-- Note: Accounts may be suspended automatically after inactivity
-
 #### Basic Plan
-- Price: ₹499/month
+- Price: ₹199/month
 - Duration: 30 days
 - Daily limit: 50 requests/day
 - Monthly limit: 1,500 requests/month
+- Support: Priority support
+- SLA: 99.9% uptime
+
+#### Standard Plan
+- Price: ₹399/month
+- Duration: 30 days
+- Daily limit: 250 requests/day
+- Monthly limit: 7,500 requests/month
 - Support: Priority support
 - SLA: 99.9% uptime
 
