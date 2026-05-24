@@ -31,18 +31,22 @@ schemaData: |
   </script>
 customStyles: |
   .faq-item {
-      border: 2px solid #e5e7eb;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid #000000;
+      background-color: #ffffff;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 2.5px 2.5px 0px 0px rgba(0,0,0,1);
   }
   
   .faq-item:hover {
-      border-color: #d1d5db;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      box-shadow: 4.5px 4.5px 0px 0px rgba(0,0,0,1);
+      transform: translate(-1.5px, -1.5px);
   }
 
   .faq-item.active {
-      border-color: #3b82f6;
-      background-color: #ffffff;
+      border-color: #000000;
+      background-color: #f0fdf4; /* Very soft light green/blue on active */
+      box-shadow: 3px 3px 0px 0px rgba(0,0,0,1);
+      transform: translate(-0.5px, -0.5px);
   }
 
   .faq-button {
@@ -51,12 +55,8 @@ customStyles: |
       user-select: none;
   }
 
-  .faq-button:active {
-      transform: scale(0.99);
-  }
-
   .faq-icon {
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
   }
 
@@ -67,34 +67,34 @@ customStyles: |
   .faq-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .faq-content-inner {
       padding: 0 1.5rem;
       padding-bottom: 0;
       opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(-8px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .faq-content.active {
-      max-height: 2000px;
+      max-height: 1000px;
   }
 
   .faq-content.active .faq-content-inner {
       padding-bottom: 1.5rem;
       opacity: 1;
       transform: translateY(0);
-      transition-delay: 0.1s;
+      transition-delay: 0.05s;
   }
 
   .faq-question {
-      transition: color 0.2s ease;
+      transition: color 0.15s ease;
   }
 
   .faq-item.active .faq-question {
-      color: #3b82f6;
+      color: #000000;
   }
 customScripts: |
   <script>
@@ -104,29 +104,17 @@ customScripts: |
           const icon = button.querySelector('.faq-icon');
           const isActive = faqItem.classList.contains('active');
           
-          // Track FAQ interaction
-          if (typeof gtag !== 'undefined') {
-              gtag('event', 'faq_toggle', {
-                  'event_category': 'FAQ',
-                  'event_label': button.querySelector('h3').textContent,
-                  'event_action': isActive ? 'close' : 'open'
-              });
-          }
-          
           if (isActive) {
-              // Close accordion
               faqItem.classList.remove('active');
               content.classList.remove('active');
               icon.classList.remove('rotated');
           } else {
-              // Open accordion
               faqItem.classList.add('active');
               content.classList.add('active');
               icon.classList.add('rotated');
           }
       }
 
-      // Close all accordions on page load for a clean start
       document.addEventListener('DOMContentLoaded', function() {
           document.querySelectorAll('.faq-item').forEach(item => {
               item.classList.remove('active');
@@ -141,30 +129,594 @@ customScripts: |
   </script>
 ---
 
+<!-- FAQ Page Schema for Google Search integration -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the GST Tax Rates API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The GST Tax Rates API is a developer-friendly API that helps applications search HSN codes for goods, search SAC codes for services, fetch GST tax rates, verify GST classifications, and automate GST lookup workflows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who can use this API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The API is useful for billing software, ERP systems, accounting platforms, e-commerce applications, SaaS products, GST-related software, and developers building automation tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why would a business need this API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Businesses and software platforms often need to identify correct GST classifications and tax rates. Instead of manually checking GST data every time, the API helps automate the process and reduce manual effort."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can this API help my software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The API can help your application automatically identify GST rates, reduce manual GST lookup work, improve billing workflows, speed up invoicing systems, simplify HSN/SAC searches, and build GST-related automation features."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are HSN and SAC codes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HSN codes are used for classifying goods under GST, while SAC codes are used for classifying services under GST. The API helps you search and identify both easily."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I search using normal keywords?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can search using common terms such as rice, cotton, software services, consulting, or machinery. The API will return matching HSN or SAC classifications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I search directly using HSN or SAC codes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you already know the code, you can directly lookup GST tax details instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of GST information does the API provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depending on the endpoint, the API can provide GST rate, CGST / SGST / IGST breakup, HSN/SAC descriptions, classification hierarchy, exemption status, and tax applicability details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the API suitable for production applications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The GST Tax Rates API is designed for real-world production integrations. All plans include a 99.9% uptime SLA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I access the API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To start using the API: activate a plan in ConsoleDesk, generate your API key, and start using the API immediately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is ConsoleDesk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ConsoleDesk is the dashboard used to activate plans, generate API keys, monitor API usage, manage subscriptions, and access developer tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I test the API before integrating it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. FastGST provides a live playground where you can paste your API key, test searches, verify responses, and explore endpoints directly from the browser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What authentication method does the API use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The API uses secure API-key based authentication."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I monitor my API usage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ConsoleDesk shows daily usage, monthly usage, remaining quota, and active plan information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I exceed my API limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Requests beyond your plan quota may be restricted until your quota resets or your plan is upgraded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which plan should I choose?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Choose Basic for testing, Standard for small applications, Pro for growing SaaS products, and Premium for high-volume production workloads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I upgrade my plan later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Plans can be upgraded anytime through ConsoleDesk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are custom or enterprise plans available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you need larger quotas or custom limits, you can contact FastGST for tailored plans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I find the API documentation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can access API documentation, Swagger references, integration examples, and endpoint details through the FastGST documentation portal."
+      }
+    }
+  ]
+}
+</script>
+
 <!-- Main Content -->
 <main class="pt-16 overflow-x-hidden">
     <section class="py-20 bg-gray-50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <div class="text-center mb-16">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
                     Frequently Asked Questions
                 </h1>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Common questions about our GST Tax Lookup API
+                    Common questions about the FastGST platform, GST Tax Rates API, and ConsoleDesk features.
                 </p>
             </div>
 
-            <!-- Still Have Questions -->
-            <div class="bg-white rounded-2xl border-2 border-black p-8 md:p-12 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Questions? We are here to help!</h2>
+            <div class="space-y-12">
+
+                <!-- SECTION 2: API CAPABILITIES & FEATURES -->
+                <div class="mb-10 mt-14 first:mt-0">
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-black mb-6 flex items-center gap-3">
+                        <span class="inline-block w-3 h-6 bg-indigo-300 border-2 border-black rounded shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)]"></span>
+                        API Capabilities & Features
+                    </h2>
+                    <div class="space-y-4">
+                        
+                        <!-- Q6 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">What is the GST Tax Rates API?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>The GST Tax Rates API is a developer-friendly API that helps applications:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>Search HSN codes for goods</li>
+                                        <li>Search SAC codes for services</li>
+                                        <li>Fetch GST tax rates</li>
+                                        <li>Verify GST classifications</li>
+                                        <li>Automate GST lookup workflows</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q7 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Who can use this API?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>The API is useful for:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>Billing software</li>
+                                        <li>ERP systems</li>
+                                        <li>Accounting platforms</li>
+                                        <li>E-commerce applications</li>
+                                        <li>SaaS products</li>
+                                        <li>GST-related software</li>
+                                        <li>Developers building automation tools</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q8 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Why would a business need this API?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Businesses and software platforms often need to identify correct GST classifications and tax rates. Instead of manually checking GST data every time, the API helps automate the process and reduce manual effort.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q9 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">How can this API help my software?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>The API can help your application:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>Automatically identify GST rates</li>
+                                        <li>Reduce manual GST lookup work</li>
+                                        <li>Improve billing workflows</li>
+                                        <li>Speed up invoicing systems</li>
+                                        <li>Simplify HSN/SAC searches</li>
+                                        <li>Build GST-related automation features</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q10 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">What are HSN and SAC codes?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <ul class="list-disc pl-5 space-y-1 font-medium">
+                                        <li><strong>HSN codes</strong> are used for classifying goods under GST.</li>
+                                        <li><strong>SAC codes</strong> are used for classifying services under GST.</li>
+                                    </ul>
+                                    <p class="mt-3">The API helps you search and identify both easily.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q11 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Can I search using normal keywords?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Yes. You can search using common terms such as:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>rice</li>
+                                        <li>cotton</li>
+                                        <li>software services</li>
+                                        <li>consulting</li>
+                                        <li>machinery</li>
+                                    </ul>
+                                    <p class="mt-3">The API will return matching HSN or SAC classifications.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q12 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Can I search directly using HSN or SAC codes?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Yes. If you already know the code, you can directly lookup GST tax details instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q13 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">What kind of GST information does the API provide?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Depending on the endpoint, the API can provide:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>GST rate</li>
+                                        <li>CGST / SGST / IGST breakup</li>
+                                        <li>HSN/SAC descriptions</li>
+                                        <li>Classification hierarchy</li>
+                                        <li>Exemption status</li>
+                                        <li>Tax applicability details</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q14 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Is the API suitable for production applications?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Yes. The GST Tax Rates API is designed for real-world production integrations. All plans include a 99.9% uptime SLA.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q15 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">What authentication method does the API use?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>The API uses secure API-key based authentication.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SECTION 3: GETTING STARTED & DASHBOARD -->
+                <div class="mb-10 mt-14">
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-black mb-6 flex items-center gap-3">
+                        <span class="inline-block w-3 h-6 bg-amber-300 border-2 border-black rounded shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)]"></span>
+                        Getting Started & Dashboard
+                    </h2>
+                    <div class="space-y-4">
+                        
+                        <!-- Q16 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">How do I access the API?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>To start using the API:</p>
+                                    <ol class="list-decimal pl-5 mt-2 space-y-1 font-medium">
+                                        <li>Activate a plan in ConsoleDesk</li>
+                                        <li>Generate your API key</li>
+                                        <li>Start using the API immediately</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q17 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">What is ConsoleDesk?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>ConsoleDesk is the dashboard used to:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>Activate plans</li>
+                                        <li>Generate API keys</li>
+                                        <li>Monitor API usage</li>
+                                        <li>Manage subscriptions</li>
+                                        <li>Access developer tools</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q18 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Can I test the API before integrating it?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Yes. FastGST provides a live playground where you can:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>Paste your API key</li>
+                                        <li>Test searches</li>
+                                        <li>Verify responses</li>
+                                        <li>Explore endpoints directly from the browser</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q19 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Can I monitor my API usage?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Yes. ConsoleDesk shows:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>Daily usage</li>
+                                        <li>Monthly usage</li>
+                                        <li>Remaining quota</li>
+                                        <li>Active plan information</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q20 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">What happens if I exceed my API limit?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Requests beyond your plan quota may be restricted until your quota resets or your plan is upgraded.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q21 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Where can I find the API documentation?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>You can access:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1 font-medium">
+                                        <li>API documentation</li>
+                                        <li>Swagger references</li>
+                                        <li>Integration examples</li>
+                                        <li>Endpoint details</li>
+                                    </ul>
+                                    <p class="mt-3">through the FastGST documentation portal.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SECTION 4: PLANS & PRICING -->
+                <div class="mb-10 mt-14">
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-black mb-6 flex items-center gap-3">
+                        <span class="inline-block w-3 h-6 bg-emerald-300 border-2 border-black rounded shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)]"></span>
+                        Plans & Pricing
+                    </h2>
+                    <div class="space-y-4">
+                        
+                        <!-- Q22 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Which plan should I choose?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <ul class="list-disc pl-5 space-y-1 font-medium">
+                                        <li><strong>Basic</strong> &rarr; Testing and personal projects</li>
+                                        <li><strong>Standard</strong> &rarr; Small applications and startups</li>
+                                        <li><strong>Pro</strong> &rarr; Growing SaaS products and businesses</li>
+                                        <li><strong>Premium</strong> &rarr; High-volume production workloads</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q23 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Can I upgrade my plan later?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Yes. Plans can be upgraded anytime through ConsoleDesk.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q24 -->
+                        <div class="faq-item rounded-xl overflow-hidden">
+                            <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                                <h3 class="faq-question text-base md:text-lg font-extrabold text-gray-900">Are custom or enterprise plans available?</h3>
+                                <svg class="faq-icon w-5 h-5 text-black transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner text-sm md:text-base text-gray-700 leading-relaxed border-t border-black/10 pt-4">
+                                    <p>Yes. If you need larger quotas or custom limits, you can contact FastGST for tailored plans.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Still Have Questions Contact Us footer -->
+            <div class="bg-white rounded-2xl border-2 border-black p-8 md:p-12 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mt-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
                 <p class="text-gray-600 mb-8 max-w-lg mx-auto">
-                    Our FAQ section is currently undergoing a complete update. If you need any assistance, have inquiries about tax lookup rates, or require support, please don't hesitate to reach out to us.
+                    Can't find what you're looking for? Don't worry—our team is ready to help you with integrations, custom API packages, or any pricing questions.
                 </p>
                 <a href="/contact/" class="inline-block bg-sky-200 text-black border-2 border-black px-8 py-3.5 rounded-lg font-extrabold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-sky-100 hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transform transition-all duration-100 uppercase tracking-wider text-sm">
                     Contact Us &rarr;
                 </a>
             </div>
+
         </div>
     </section>
 </main>
-
