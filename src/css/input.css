@@ -99,3 +99,27 @@
     }
 }
 
+/* ==========================================================================
+   Safari WebKit Compositing & Paint Glitch Fix
+   ========================================================================== */
+@supports (-webkit-hyphens:none) {
+    /* Targets Safari (both iOS and macOS) specifically */
+    a, button, [role="button"], .gst-search-card {
+        /* Prevents native button styling overrides in Safari */
+        -webkit-appearance: none;
+        appearance: none;
+        
+        /* Force Safari to create a hardware-accelerated compositing layer.
+           This prevents background colors and borders from disappearing/going transparent
+           when transition transforms are applied. */
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        
+        /* Ensures the background color paints correctly up to the border edges */
+        background-clip: padding-box;
+    }
+}
+
+
