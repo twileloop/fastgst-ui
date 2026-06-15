@@ -67,7 +67,7 @@ const TaxLookupAPI = (function() {
             throw new Error('Search query cannot be empty');
         }
 
-        const url = `${API_BASE_URL}/search/hsn?query=${encodeURIComponent(query.trim())}`;
+        const url = `${API_BASE_URL}/search/hsn/semantic-search?query=${encodeURIComponent(query.trim())}`;
         return await makeRequest(url);
     }
 
