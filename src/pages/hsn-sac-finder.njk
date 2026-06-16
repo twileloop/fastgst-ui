@@ -66,7 +66,7 @@ schemaData: |
                     <h1 class="sr-only">Find HSN/SAC Codes & GST Tax Rates</h1>
 
                     <!-- Colorful Stepper -->
-                    <div class="max-w-5xl mx-auto mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4 px-4">
+                    <div class="max-w-6xl mx-auto mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4 px-4">
                             <!-- Step 1 -->
                             <div class="flex items-center gap-2 text-black bg-yellow-200 border-2 border-black px-4 py-1.5 rounded-full text-sm font-extrabold shadow-[2.5px_2.5px_0px_0px_rgba(0,0,0,1)] hover:bg-yellow-100 transition-all duration-100 transform hover:-translate-y-0.5">
                                 <span class="bg-black text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-black">1</span>
@@ -96,65 +96,75 @@ schemaData: |
                 </div>
 
                 <!-- Compact GST Search Interface -->
-                <div class="max-w-4xl mx-auto mb-8">
+                <div class="max-w-6xl mx-auto mb-8">
 
                     <div class="flex flex-col gap-6">
                         <!-- API Configuration Card -->
-                        <div class="gst-search-card relative z-20">
-                            <!-- Content -->
-                            <div class="py-2">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                                    <!-- API Key Section -->
-                                    <div class="relative">
-                                        <!-- API Key Input -->
-                                        <div class="relative max-w-sm">
-                                            <div class="absolute left-3 top-1/2 -translate-y-1/2 z-10 flex items-center pointer-events-none text-gray-400">
-                                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-                                                </svg>
-                                            </div>
-                                            <input
-                                                type="password"
-                                                id="api-key-input"
-                                                placeholder="Paste your API Key"
-                                                class="w-full pl-9 pr-4 py-1.5 text-xs md:text-sm border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none bg-white shadow-sm"
-                                            >
+                        <div class="bg-white p-6 rounded-2xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative z-20">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                <!-- API Key Input Section -->
+                                <div class="lg:col-span-5 space-y-2">
+                                    <label for="api-key-input" class="block text-xs font-black uppercase tracking-wider text-gray-700">
+                                        Paste Your API Key Here
+                                    </label>
+                                    <div class="relative w-full">
+                                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 z-10 flex items-center pointer-events-none text-gray-900">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                                            </svg>
                                         </div>
+                                        <input
+                                            type="password"
+                                            id="api-key-input"
+                                            placeholder="Paste your API Key here..."
+                                            class="w-full pl-11 pr-10 py-3 text-sm font-bold border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:border-black focus:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[1px] focus:translate-y-[1px] outline-none bg-white text-gray-900 transition-all duration-100"
+                                        >
+                                        <button type="button" onclick="toggleKeyVisibility()" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 text-gray-500 hover:text-black focus:outline-none">
+                                            <svg id="eye-icon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                            </svg>
+                                        </button>
                                     </div>
+                                </div>
 
-                                    <!-- API Usage Section -->
-                                    <div class="relative">
-                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                            <!-- Today's Usage Progress Bar -->
-                                            <div>
-                                                <div class="flex justify-between items-center mb-2">
-                                                    <span class="text-xs font-semibold text-gray-700 flex items-center gap-1.5">
-                                                        <svg class="w-3.5 h-3.5 animate-spin text-orange-500" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
-                                                        </svg>
-                                                        Today's Usage
-                                                    </span>
-                                                    <span class="text-xs font-bold text-gray-600" id="usage-today-text">- / -</span>
-                                                </div>
-                                                <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden shadow-sm">
-                                                    <div id="usage-today-bar" class="bg-orange-500 h-3 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
-                                                </div>
+                                <!-- Separator line -->
+                                <div class="hidden lg:flex lg:col-span-1 justify-center items-stretch h-full py-2">
+                                    <div class="w-[2px] bg-gray-200"></div>
+                                </div>
+
+                                <!-- API Usage Section -->
+                                <div class="lg:col-span-6 space-y-4">
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        <!-- Today's Usage Progress Bar -->
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-xs font-black uppercase tracking-wider text-gray-700 flex items-center gap-1.5">
+                                                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                                    </svg>
+                                                    Daily Quota
+                                                </span>
+                                                <span class="text-xs font-black font-mono text-gray-900" id="usage-today-text">- / -</span>
                                             </div>
- 
-                                            <!-- Tenure Usage Progress Bar -->
-                                            <div>
-                                                <div class="flex justify-between items-center mb-2">
-                                                    <span class="text-xs font-semibold text-gray-700 flex items-center gap-1.5">
-                                                        <svg class="w-3.5 h-3.5 animate-spin text-orange-500" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
-                                                        </svg>
-                                                        Total Usage
-                                                    </span>
-                                                    <span class="text-xs font-bold text-gray-600" id="usage-tenure-text">- / -</span>
-                                                </div>
-                                                <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden shadow-sm">
-                                                    <div id="usage-tenure-bar" class="bg-orange-500 h-3 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
-                                                </div>
+                                            <div class="w-full bg-gray-100 border-2 border-black rounded-full h-4 overflow-hidden shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
+                                                <div id="usage-today-bar" class="bg-yellow-300 h-full border-black transition-all duration-500 ease-out" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+     
+                                        <!-- Tenure Usage Progress Bar -->
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-xs font-black uppercase tracking-wider text-gray-700 flex items-center gap-1.5">
+                                                    <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                    </svg>
+                                                    Tenure Quota
+                                                </span>
+                                                <span class="text-xs font-black font-mono text-gray-900" id="usage-tenure-text">- / -</span>
+                                            </div>
+                                            <div class="w-full bg-gray-100 border-2 border-black rounded-full h-4 overflow-hidden shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
+                                                <div id="usage-tenure-bar" class="bg-sky-300 h-full border-black transition-all duration-500 ease-out" style="width: 0%"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -190,183 +200,189 @@ schemaData: |
                         <div id="search-interface" class="p-6 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 border-b border-gray-200/50">
                             
                             <!-- GOODS PANEL -->
-                            <div id="goods-panel" class="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-8 lg:items-start">
-                                <!-- Search Goods By Keyword -->
-                                <div class="relative w-full">
-                                    <!-- Section Label -->
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
-                                        </div>
-                                        <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">By Keyword</h3>
-                                    </div>
-                                    
-                                    <!-- Keyword Search Input -->
-                                    <div class="relative">
-                                        <div class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center pointer-events-none text-gray-400">
-                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
-                                        </div>
-                                        <input
-                                            type="text"
-                                            id="hsn-keyword-input"
-                                            placeholder="Eg: 'rice', 'cotton'..."
-                                            class="w-full pl-12 pr-4 py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 outline-none bg-white shadow-md"
-                                        >
-                                    </div>
-
-                                    <!-- Keyword Search Results -->
-                                    <div id="hsn-keyword-results" class="hidden relative z-50 w-full mt-4">
-                                        <div class="pb-4">
-                                            <div class="space-y-0">
-                                                <!-- Search results will be populated here -->
+                            <div id="goods-panel" class="space-y-6">
+                                <!-- Input fields grid -->
+                                <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] lg:gap-8 lg:items-start">
+                                    <!-- Search Goods By Keyword -->
+                                    <div class="relative w-full">
+                                        <!-- Section Label -->
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                </svg>
                                             </div>
+                                            <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">By Keyword</h3>
+                                        </div>
+                                        
+                                        <!-- Keyword Search Input -->
+                                        <div class="relative">
+                                            <div class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center pointer-events-none text-gray-400">
+                                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                </svg>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                id="hsn-keyword-input"
+                                                placeholder="Eg: 'rice', 'cotton'..."
+                                                class="w-full pl-12 pr-4 py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 outline-none bg-white shadow-md"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <!-- Divider -->
+                                    <div class="relative flex lg:flex-col items-center justify-center my-4 lg:my-0 lg:self-stretch lg:px-4">
+                                        <!-- Line for mobile (horizontal) -->
+                                        <div class="absolute inset-0 flex items-center lg:hidden" aria-hidden="true">
+                                            <div class="w-full border-t border-gray-300"></div>
+                                        </div>
+                                        <!-- Line for desktop (vertical) -->
+                                        <div class="absolute inset-0 hidden lg:flex justify-center" aria-hidden="true">
+                                            <div class="h-full border-l border-gray-300"></div>
+                                        </div>
+                                        <!-- "Or" text pill -->
+                                        <span class="relative z-10 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 px-4 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-full border border-gray-200">
+                                            Or
+                                        </span>
+                                    </div>
+
+                                    <!-- Search By HSN Code -->
+                                    <div class="relative w-full">
+                                        <!-- Section Label -->
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-600">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">By HSN Code</h3>
+                                        </div>
+                                        
+                                        <!-- HSN Code Input -->
+                                        <div class="relative">
+                                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                                </svg>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                id="hsn-input-field"
+                                                maxlength="11"
+                                                placeholder="Enter HSN Code (XX-XX-XX-XX)"
+                                                class="w-full pl-12 pr-[160px] py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 outline-none bg-white shadow-md text-gray-800 font-medium"
+                                            >
+                                            <button id="hsn-search-btn" class="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-green-400 text-black border-2 border-black rounded-lg font-extrabold text-xs uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-green-300 hover:shadow-[0.5px_0.5px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transform transition-all duration-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0" disabled>
+                                                Lookup HSN
+                                            </button>
+                                        </div>
+                                        <div id="hsn-helper-text" class="mt-2 text-xs font-medium text-left text-red-500">
+                                            Please enter 8-digit tariff item HSN code
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Divider -->
-                                <div class="relative flex lg:flex-col items-center justify-center my-4 lg:my-0 lg:self-stretch lg:px-4">
-                                    <!-- Line for mobile (horizontal) -->
-                                    <div class="absolute inset-0 flex items-center lg:hidden" aria-hidden="true">
-                                        <div class="w-full border-t border-gray-300"></div>
-                                    </div>
-                                    <!-- Line for desktop (vertical) -->
-                                    <div class="absolute inset-0 hidden lg:flex justify-center" aria-hidden="true">
-                                        <div class="h-full border-l border-gray-300"></div>
-                                    </div>
-                                    <!-- "Or" text pill -->
-                                    <span class="relative z-10 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 px-4 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-full border border-gray-200">
-                                        Or
-                                    </span>
-                                </div>
-
-                                <!-- Search By HSN Code -->
-                                <div class="relative w-full">
-                                    <!-- Section Label -->
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-600">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
-                                            </svg>
+                                <!-- Keyword Search Results (Full Width) -->
+                                <div id="hsn-keyword-results" class="hidden relative z-50 w-full">
+                                    <div class="pb-4">
+                                        <div class="space-y-0">
+                                            <!-- Search results will be populated here -->
                                         </div>
-                                        <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">By HSN Code</h3>
-                                    </div>
-                                    
-                                    <!-- HSN Code Input -->
-                                    <div class="relative">
-                                        <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
-                                            </svg>
-                                        </div>
-                                        <input
-                                            type="text"
-                                            id="hsn-input-field"
-                                            maxlength="11"
-                                            placeholder="Enter HSN Code (XX-XX-XX-XX)"
-                                            class="w-full pl-12 pr-[160px] py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 outline-none bg-white shadow-md text-gray-800 font-medium"
-                                        >
-                                        <button id="hsn-search-btn" class="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-green-400 text-black border-2 border-black rounded-lg font-extrabold text-xs uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-green-300 hover:shadow-[0.5px_0.5px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transform transition-all duration-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0" disabled>
-                                            Lookup HSN
-                                        </button>
-                                    </div>
-                                    <div id="hsn-helper-text" class="mt-2 text-xs font-medium text-left text-red-500">
-                                        Please enter 8-digit tariff item HSN code
                                     </div>
                                 </div>
                             </div>
 
                             <!-- SERVICES PANEL (Hidden by default) -->
-                            <div id="services-panel" class="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-8 lg:items-start hidden">
-                                <!-- Search Services By Keyword -->
-                                <div class="relative w-full">
-                                    <!-- Section Label -->
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-600">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
-                                        </div>
-                                        <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">By Keyword</h3>
-                                    </div>
-                                    
-                                    <!-- Keyword Search Input -->
-                                    <div class="relative">
-                                        <div class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center pointer-events-none text-gray-400">
-                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
-                                        </div>
-                                        <input
-                                            type="text"
-                                            id="sac-keyword-input"
-                                            placeholder="Eg: 'consulting'..."
-                                            class="w-full pl-12 pr-4 py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none bg-white shadow-md"
-                                        >
-                                    </div>
-
-                                    <!-- Keyword Search Results -->
-                                    <div id="sac-keyword-results" class="hidden relative z-50 w-full mt-4">
-                                        <div class="pb-4">
-                                            <div class="space-y-0">
-                                                <!-- Search results will be populated here -->
+                            <div id="services-panel" class="space-y-6 hidden">
+                                <!-- Input fields grid -->
+                                <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] lg:gap-8 lg:items-start">
+                                    <!-- Search Services By Keyword -->
+                                    <div class="relative w-full">
+                                        <!-- Section Label -->
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-600">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                </svg>
                                             </div>
+                                            <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">By Keyword</h3>
+                                        </div>
+                                        
+                                        <!-- Keyword Search Input -->
+                                        <div class="relative">
+                                            <div class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center pointer-events-none text-gray-400">
+                                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                </svg>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                id="sac-keyword-input"
+                                                placeholder="Eg: 'consulting'..."
+                                                class="w-full pl-12 pr-4 py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none bg-white shadow-md"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <!-- Divider -->
+                                    <div class="relative flex lg:flex-col items-center justify-center my-4 lg:my-0 lg:self-stretch lg:px-4">
+                                        <!-- Line for mobile (horizontal) -->
+                                        <div class="absolute inset-0 flex items-center lg:hidden" aria-hidden="true">
+                                            <div class="w-full border-t border-gray-300"></div>
+                                        </div>
+                                        <!-- Line for desktop (vertical) -->
+                                        <div class="absolute inset-0 hidden lg:flex justify-center" aria-hidden="true">
+                                            <div class="h-full border-l border-gray-300"></div>
+                                        </div>
+                                        <!-- "Or" text pill -->
+                                        <span class="relative z-10 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 px-4 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-full border border-gray-200">
+                                            Or
+                                        </span>
+                                    </div>
+
+                                    <!-- Search By SAC Code -->
+                                    <div class="relative w-full">
+                                        <!-- Section Label -->
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 text-orange-600">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">By SAC Code</h3>
+                                        </div>
+                                        
+                                        <!-- SAC Code Input -->
+                                        <div class="relative">
+                                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                                </svg>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                id="sac-input-field"
+                                                maxlength="9"
+                                                placeholder="Enter SAC Code (XXX-X-X-X)"
+                                                class="w-full pl-12 pr-[160px] py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none bg-white shadow-md text-gray-800 font-medium"
+                                            >
+                                            <button id="sac-search-btn" class="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-green-400 text-black border-2 border-black rounded-lg font-extrabold text-xs uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-green-300 hover:shadow-[0.5px_0.5px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transform transition-all duration-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0" disabled>
+                                                Lookup SAC
+                                            </button>
+                                        </div>
+                                        <div id="sac-helper-text" class="mt-2 text-xs font-medium text-left text-red-500">
+                                            Please enter 6-digit service SAC code
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Divider -->
-                                <div class="relative flex lg:flex-col items-center justify-center my-4 lg:my-0 lg:self-stretch lg:px-4">
-                                    <!-- Line for mobile (horizontal) -->
-                                    <div class="absolute inset-0 flex items-center lg:hidden" aria-hidden="true">
-                                        <div class="w-full border-t border-gray-300"></div>
-                                    </div>
-                                    <!-- Line for desktop (vertical) -->
-                                    <div class="absolute inset-0 hidden lg:flex justify-center" aria-hidden="true">
-                                        <div class="h-full border-l border-gray-300"></div>
-                                    </div>
-                                    <!-- "Or" text pill -->
-                                    <span class="relative z-10 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 px-4 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider rounded-full border border-gray-200">
-                                        Or
-                                    </span>
-                                </div>
-
-                                <!-- Search By SAC Code -->
-                                <div class="relative w-full">
-                                    <!-- Section Label -->
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 text-orange-600">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
-                                            </svg>
+                                <!-- Keyword Search Results (Full Width) -->
+                                <div id="sac-keyword-results" class="hidden relative z-50 w-full">
+                                    <div class="pb-4">
+                                        <div class="space-y-0">
+                                            <!-- Search results will be populated here -->
                                         </div>
-                                        <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">By SAC Code</h3>
-                                    </div>
-                                    
-                                    <!-- SAC Code Input -->
-                                    <div class="relative">
-                                        <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
-                                            </svg>
-                                        </div>
-                                        <input
-                                            type="text"
-                                            id="sac-input-field"
-                                            maxlength="9"
-                                            placeholder="Enter SAC Code (XXX-X-X-X)"
-                                            class="w-full pl-12 pr-[160px] py-4 text-sm md:text-lg border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none bg-white shadow-md text-gray-800 font-medium"
-                                        >
-                                        <button id="sac-search-btn" class="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-green-400 text-black border-2 border-black rounded-lg font-extrabold text-xs uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-green-300 hover:shadow-[0.5px_0.5px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transform transition-all duration-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0" disabled>
-                                            Lookup SAC
-                                        </button>
-                                    </div>
-                                    <div id="sac-helper-text" class="mt-2 text-xs font-medium text-left text-red-500">
-                                        Please enter 6-digit service SAC code
                                     </div>
                                 </div>
                             </div>
@@ -636,6 +652,25 @@ schemaData: |
 // ==========================================
 // API KEY PERSISTENCE - localStorage
 // ==========================================
+function toggleKeyVisibility() {
+    const keyInput = document.getElementById('api-key-input');
+    const eyeIcon = document.getElementById('eye-icon');
+    if (!keyInput || !eyeIcon) return;
+    
+    if (keyInput.type === 'password') {
+        keyInput.type = 'text';
+        eyeIcon.innerHTML = `
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+        `;
+    } else {
+        keyInput.type = 'password';
+        eyeIcon.innerHTML = `
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+        `;
+    }
+}
+
 function initializeAPIKeyStorage() {
     const apiKeyInput = document.getElementById('api-key-input');
 
@@ -678,8 +713,10 @@ window.fetchAndUpdateAPIUsage = async function() {
     if (!apiKey) {
         todayText.textContent = '- / -';
         todayBar.style.width = '0%';
+        todayBar.className = 'bg-yellow-300 h-full border-black transition-all duration-500 ease-out';
         tenureText.textContent = '- / -';
         tenureBar.style.width = '0%';
+        tenureBar.className = 'bg-sky-300 h-full border-black transition-all duration-500 ease-out';
         return;
     }
 
@@ -693,7 +730,7 @@ window.fetchAndUpdateAPIUsage = async function() {
             todayText.textContent = `${daily.used.toLocaleString()} / ${daily.limit.toLocaleString()}`;
             const todayPercent = Math.min(100, Math.max(0, (daily.used / daily.limit) * 100)) || 0;
             todayBar.style.width = `${todayPercent}%`;
-            todayBar.className = 'bg-orange-500 h-3 rounded-full transition-all duration-500 ease-out';
+            todayBar.className = 'bg-yellow-300 h-full border-black transition-all duration-500 ease-out ' + (todayPercent > 0 ? 'border-r-2' : '');
         }
 
         if (data.quota && data.quota.tenure) {
@@ -701,7 +738,7 @@ window.fetchAndUpdateAPIUsage = async function() {
             tenureText.textContent = `${tenure.used.toLocaleString()} / ${tenure.limit.toLocaleString()}`;
             const tenurePercent = Math.min(100, Math.max(0, (tenure.used / tenure.limit) * 100)) || 0;
             tenureBar.style.width = `${tenurePercent}%`;
-            tenureBar.className = 'bg-orange-500 h-3 rounded-full transition-all duration-500 ease-out';
+            tenureBar.className = 'bg-sky-300 h-full border-black transition-all duration-500 ease-out ' + (tenurePercent > 0 ? 'border-r-2' : '');
         }
     } catch (error) {
         console.error('Failed to fetch API usage:', error);
