@@ -23,7 +23,7 @@ FastGST simplifies GST tax rate integration by aggregating GST tax rates into a 
 - **Authentication**: API Key passed via custom header `X-API-Key`
 
 #### Endpoints
-- `GET /search/hsn/semantic-search?query={keyword}` — Fuzzy keyword search for HSN codes (goods)
+- `GET /search/hsn/semantic-search?query={keyword}` — Highly optised best in class vector semantic searches over keyword search for HSN codes (goods)
 - `GET /search/hsn/{code}` — Fetch full classification details & hierarchy for a specific HSN code
 - `GET /search/hsn/{code}/taxes` — Get GST tax rates & compensation cess details for a specific HSN code
 - `GET /search/sac?query={keyword}` — Fuzzy keyword search for SAC codes (services)
